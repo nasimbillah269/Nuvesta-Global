@@ -1,12 +1,12 @@
-@extends(welcomeTheme().'layouts.app') @section('title')
-<title>{{websiteTitle()}}</title>
-@endsection @section('SEO')
-<meta name="title" property="og:title" content="{{general()->meta_title}}" />
-<meta name="description" property="og:description" content="{!!general()->meta_description!!}" />
-<meta name="keyword" property="og:keyword" content="{{general()->meta_keyword}}" />
-<meta name="image" property="og:image" content="{{asset(general()->logo())}}" />
-<meta name="url" property="og:url" content="{{route('index')}}" />
-<link rel="canonical" href="{{route('index')}}" />
+ <?php $__env->startSection('title'); ?>
+<title><?php echo e(websiteTitle()); ?></title>
+<?php $__env->stopSection(); ?> <?php $__env->startSection('SEO'); ?>
+<meta name="title" property="og:title" content="<?php echo e(general()->meta_title); ?>" />
+<meta name="description" property="og:description" content="<?php echo general()->meta_description; ?>" />
+<meta name="keyword" property="og:keyword" content="<?php echo e(general()->meta_keyword); ?>" />
+<meta name="image" property="og:image" content="<?php echo e(asset(general()->logo())); ?>" />
+<meta name="url" property="og:url" content="<?php echo e(route('index')); ?>" />
+<link rel="canonical" href="<?php echo e(route('index')); ?>" />
 
 <style>
     .whoMain {
@@ -150,12 +150,12 @@
 </style>
 
 
-@endsection
-@section('contents')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('contents'); ?>
 <div class="nv nv-home">
 
 <!--Hero-->
-@include(general()->theme.'.layouts.slider')
+<?php echo $__env->make(general()->theme.'.layouts.slider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 <div class="whoMain">
@@ -182,7 +182,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
             </div>
             <div class="col-md-6">
                 <div class="whoRight">
-                    <img src="{{asset('welcome/images/home/WhatsApp Image 2026-09-27 at 3.00.36 PM.jpeg')}}" alt="H&amp;M">
+                    <img src="<?php echo e(asset('welcome/images/home/WhatsApp Image 2026-09-27 at 3.00.36 PM.jpeg')); ?>" alt="H&amp;M">
                 </div>
             </div>
         </div>
@@ -235,58 +235,60 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
         <p class="eyebrow">Our Products</p>
         <h2 class="section-title">Our Product Expertise</h2>
         <p class="section-text">Wide range of apparel categories with a focus on quality, trends and commercial value.</p>
-        <a href="{{($productsPage = pageTemplate('Latest Products')) ? route('pageView',$productsPage->slug) : url('products-all')}}" class="nv-btn nv-btn-outline">View All Product Categories <i class="bi bi-arrow-right"></i></a>
+        <a href="<?php echo e(($productsPage = pageTemplate('Latest Products')) ? route('pageView',$productsPage->slug) : url('products-all')); ?>" class="nv-btn nv-btn-outline">View All Product Categories <i class="bi bi-arrow-right"></i></a>
       </div>
       <div class="col-lg-9">
-        @php
+        <?php
           $ctgCount = isset($homeCategories) ? $homeCategories->count() : 0;
           $xlCols   = max(3, min(6, $ctgCount));
-        @endphp
-        @if($ctgCount)
-        <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-xl-{{$xlCols}} {{$ctgCount < 6 ? 'ctg-few' : ''}}">
-          @foreach($homeCategories as $ctg)
-          <div class="col" data-aos="fade-up" data-aos-delay="{{$loop->index*80}}">
-            <a href="{{route('productCategory',$ctg->slug?:'no-title')}}" class="product-card">
-              @php
+        ?>
+        <?php if($ctgCount): ?>
+        <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-xl-<?php echo e($xlCols); ?> <?php echo e($ctgCount < 6 ? 'ctg-few' : ''); ?>">
+          <?php $__currentLoopData = $homeCategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ctg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <div class="col" data-aos="fade-up" data-aos-delay="<?php echo e($loop->index*80); ?>">
+            <a href="<?php echo e(route('productCategory',$ctg->slug?:'no-title')); ?>" class="product-card">
+              <?php
                 // no category/product image -> use a matching home photo if we have one
                 $fallback = collect(['outerwear','knitwear','shirts','denim','activewear','pants'])
                     ->first(fn($k) => str_contains(Str::lower($ctg->slug.' '.$ctg->name), rtrim($k,'s')) || str_contains(Str::lower($ctg->name), Str::substr($k,0,4)));
                 $imgSrc = $ctg->cardImage ?: ($fallback ? 'welcome/images/home/p-'.$fallback.'.jpg' : 'medies/noimage.jpg');
-              @endphp
-              <div class="ph"><img src="{{asset($imgSrc)}}" alt="{{$ctg->name}}" loading="lazy"></div>
+              ?>
+              <div class="ph"><img src="<?php echo e(asset($imgSrc)); ?>" alt="<?php echo e($ctg->name); ?>" loading="lazy"></div>
               <div class="product-info">
-                <h6>{{$ctg->name}}</h6>
+                <h6><?php echo e($ctg->name); ?></h6>
                 <p>
-                  @if($ctg->subNames->count())
-                    {{$ctg->subNames->implode(' | ')}}
-                  @else
-                    {{$ctg->productsTotal ? $ctg->productsTotal.' '.Str::plural('product',$ctg->productsTotal) : 'Explore range'}}
-                  @endif
+                  <?php if($ctg->subNames->count()): ?>
+                    <?php echo e($ctg->subNames->implode(' | ')); ?>
+
+                  <?php else: ?>
+                    <?php echo e($ctg->productsTotal ? $ctg->productsTotal.' '.Str::plural('product',$ctg->productsTotal) : 'Explore range'); ?>
+
+                  <?php endif; ?>
                 </p>
               </div>
             </a>
           </div>
-          @endforeach
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
-        @else
+        <?php else: ?>
         <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-xl-6">
-          @foreach([
+          <?php $__currentLoopData = [
             ['pants','Pants &amp; Shorts','Chinos | Cargo | Casual | Denim'],
             ['outerwear','Outerwear','Jackets | Puffer | Technical | Workwear'],
             ['shirts','Shirts','Woven | Flannel | Oxford | Poplin'],
             ['knitwear','Knitwear','T-Shirts | Polo | Sweatshirts | Hoodies'],
             ['activewear','Activewear','Sportswear | Performance | Underwear'],
             ['denim','Denim','Jeans | Shorts | Jackets | Washed'],
-          ] as $p)
-          <div class="col" data-aos="fade-up" data-aos-delay="{{$loop->index*80}}">
+          ]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <div class="col" data-aos="fade-up" data-aos-delay="<?php echo e($loop->index*80); ?>">
             <a href="#" class="product-card">
-              <div class="ph"><img src="{{asset('welcome/images/home/p-'.$p[0].'.jpg')}}" alt="{{strip_tags(html_entity_decode($p[1]))}}" loading="lazy"></div>
-              <div class="product-info"><h6>{!!$p[1]!!}</h6><p>{{$p[2]}}</p></div>
+              <div class="ph"><img src="<?php echo e(asset('welcome/images/home/p-'.$p[0].'.jpg')); ?>" alt="<?php echo e(strip_tags(html_entity_decode($p[1]))); ?>" loading="lazy"></div>
+              <div class="product-info"><h6><?php echo $p[1]; ?></h6><p><?php echo e($p[2]); ?></p></div>
             </a>
           </div>
-          @endforeach
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
-        @endif
+        <?php endif; ?>
       </div>
     </div>
   </div>
@@ -296,7 +298,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
 <section class="split">
   <div class="row g-0">
     <div class="col-lg-6 fabric-block">
-      <div class="fabric-img" data-aos="fade-right" style="background-image:url('{{asset('welcome/images/home/fabric.jpg')}}')"></div>
+      <div class="fabric-img" data-aos="fade-right" style="background-image:url('<?php echo e(asset('welcome/images/home/fabric.jpg')); ?>')"></div>
       <div class="fabric-content" data-aos="fade-up">
         <p class="eyebrow">Fabric Sourcing</p>
         <h3>More Than Garments.<br>We Source the Materials Behind Them.</h3>
@@ -304,7 +306,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
         <a href="#" class="nv-btn nv-btn-light">Explore Fabric Categories <i class="bi bi-arrow-right"></i></a>
       </div>
     </div>
-    <div class="col-lg-6 platform-block" style="background-image:url('{{asset('welcome/images/home/city.jpg')}}')">
+    <div class="col-lg-6 platform-block" style="background-image:url('<?php echo e(asset('welcome/images/home/city.jpg')); ?>')">
       <div class="platform-content" data-aos="fade-up" data-aos-delay="150">
         <p class="eyebrow">Our Sourcing Platform</p>
         <h3>Bangladesh Manufacturing.<br>European Perspective.</h3>
@@ -322,7 +324,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
           </div>
           <div>
             <div class="flag-title">
-              <span class="flag"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#003399"/><g fill="#ffcc00">@for($i=0;$i<12;$i++)<circle cx="{{round(15+6*cos($i*M_PI/6),2)}}" cy="{{round(10+6*sin($i*M_PI/6),2)}}" r=".9"/>@endfor</g></svg></span>
+              <span class="flag"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#003399"/><g fill="#ffcc00"><?php for($i=0;$i<12;$i++): ?><circle cx="<?php echo e(round(15+6*cos($i*M_PI/6),2)); ?>" cy="<?php echo e(round(10+6*sin($i*M_PI/6),2)); ?>" r=".9"/><?php endfor; ?></g></svg></span>
               LITHUANIA / EUROPE
             </div>
             <ul class="check-list">
@@ -363,12 +365,12 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
 <!-- ================= ABOUT + CTA ================= -->
 <section class="about-band">
   <div class="d-none d-xl-block"></div>
-  <div class="about-photo" data-aos="fade-up" role="img" aria-label="MD Ariful Islam, founder of Nuvesta Global" style="background-image:url('{{asset('welcome/images/home/founder.jpg')}}')"></div>
+  <div class="about-photo" data-aos="fade-up" role="img" aria-label="MD Ariful Islam, founder of Nuvesta Global" style="background-image:url('<?php echo e(asset('welcome/images/home/founder.jpg')); ?>')"></div>
   <div class="about-text" data-aos="fade-up" data-aos-delay="100">
     <p class="eyebrow light">About Nuvesta</p>
     <h3>Built on 26+ Years of<br>Apparel Experience</h3>
     <p>Nuvesta Global LLC was created to combine decades of hands-on apparel experience with a modern, transparent approach to international sourcing.</p>
-    <a href="{{($aboutPage = pageTemplate('About Us')) ? route('pageView',$aboutPage->slug) : url('about-us')}}" class="nv-btn nv-btn-light">Meet MD Ariful Islam <i class="bi bi-arrow-right"></i></a>
+    <a href="<?php echo e(($aboutPage = pageTemplate('About Us')) ? route('pageView',$aboutPage->slug) : url('about-us')); ?>" class="nv-btn nv-btn-light">Meet MD Ariful Islam <i class="bi bi-arrow-right"></i></a>
   </div>
   <div class="expertise" data-aos="fade-up" data-aos-delay="200">
     <h6>My core expertise includes:</h6>
@@ -378,7 +380,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
       <li>Vendor Management</li><li>Buyer Communication</li>
     </ul>
   </div>
-  <div class="cta-block" style="background-image:url('{{asset('welcome/images/home/city.jpg')}}')">
+  <div class="cta-block" style="background-image:url('<?php echo e(asset('welcome/images/home/city.jpg')); ?>')">
     <div class="cta-content" data-aos="fade-left" data-aos-delay="250">
       <h3>Looking for a Reliable<br>Bangladesh Sourcing Partner?</h3>
       <p>Whether you are a brand, importer, retailer or buying office — we can help you source your next apparel program.</p>
@@ -397,11 +399,11 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
       </div>
       <div class="col-lg-8">
         <div class="partner-logos">
-          <div class="partner-logo" data-aos="fade-up" data-aos-delay="0"><img src="{{asset('welcome/images/home/brand-hm.png')}}" alt="H&amp;M"></div>
-          <div class="partner-logo" data-aos="fade-up" data-aos-delay="70"><img src="{{asset('welcome/images/home/brand-zara.png')}}" alt="Zara"></div>
-          <div class="partner-logo" data-aos="fade-up" data-aos-delay="140"><img src="{{asset('welcome/images/home/brand-ms.png')}}" alt="M&amp;S"></div>
-          <div class="partner-logo" data-aos="fade-up" data-aos-delay="210"><img src="{{asset('welcome/images/home/brand-ca.png')}}" alt="C&amp;A"></div>
-          <div class="partner-logo" data-aos="fade-up" data-aos-delay="280"><img src="{{asset('welcome/images/home/brand-next.png')}}" alt="Next"></div>
+          <div class="partner-logo" data-aos="fade-up" data-aos-delay="0"><img src="<?php echo e(asset('welcome/images/home/brand-hm.png')); ?>" alt="H&amp;M"></div>
+          <div class="partner-logo" data-aos="fade-up" data-aos-delay="70"><img src="<?php echo e(asset('welcome/images/home/brand-zara.png')); ?>" alt="Zara"></div>
+          <div class="partner-logo" data-aos="fade-up" data-aos-delay="140"><img src="<?php echo e(asset('welcome/images/home/brand-ms.png')); ?>" alt="M&amp;S"></div>
+          <div class="partner-logo" data-aos="fade-up" data-aos-delay="210"><img src="<?php echo e(asset('welcome/images/home/brand-ca.png')); ?>" alt="C&amp;A"></div>
+          <div class="partner-logo" data-aos="fade-up" data-aos-delay="280"><img src="<?php echo e(asset('welcome/images/home/brand-next.png')); ?>" alt="Next"></div>
           <div class="partner-more" data-aos="fade-up" data-aos-delay="350">and more...</div>
         </div>
       </div>
@@ -410,4 +412,6 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
 </section>
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make(welcomeTheme().'layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\nuvesta-globa\resources\views/welcome/index.blade.php ENDPATH**/ ?>

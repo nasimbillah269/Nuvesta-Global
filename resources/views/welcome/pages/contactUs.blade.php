@@ -156,20 +156,22 @@
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div class="contact-info-content">
-                                <h4>Bangladesh Office</h4>
-                                <p>House 33, (5th Floor), Road 3 Sector 9,<br>Uttara, Dhaka 1230 Bangladesh.</p>
+                                <h4>Lithuania Office</h4>
+                                <p>Girulių g. 5, LT-12124<br>Vilnius, Lithuania</p>
                             </div>
                         </div>
-
+                        
                         <div class="contact-info-card">
                             <div class="contact-icon-box">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div class="contact-info-content">
-                                <h4>Lithuania Office</h4>
-                                <p>Girulių g. 5, LT-12124<br>Vilnius, Lithuania</p>
+                                <h4>Bangladesh Office</h4>
+                                <p>House 33, (5th Floor), Road 3 Sector 9,<br>Uttara, Dhaka 1230 Bangladesh.</p>
                             </div>
                         </div>
+
+                        
 
                         <div class="contact-info-card">
                             <div class="contact-icon-box">
@@ -178,6 +180,7 @@
                             <div class="contact-info-content">
                                 <h4>Call Us</h4>
                                 <p><a href="tel:+447782273969">+447782273969</a></p>
+                                <p><a href="tel:+447782273969">+8801812370181</a></p>
                             </div>
                         </div>
 
@@ -187,7 +190,7 @@
                             </div>
                             <div class="contact-info-content">
                                 <h4>Email Us</h4>
-                                <p><a href="mailto:contact@nuvestagloballlc.com">contact@nuvestagloballlc.com</a></p>
+                                <p><a href="mailto:contact@nuvestagloballlc.com">info@nuvestagloballlc.com</a></p>
                             </div>
                         </div>
                     </div>

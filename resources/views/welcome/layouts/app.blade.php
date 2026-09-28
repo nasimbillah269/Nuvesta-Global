@@ -1243,9 +1243,52 @@ header .sub_header ul .onhover-div .shoping-prize, header .sub_header ul li .sho
     font-weight: 400;
         }
 
+.nv .hero h1 {
+    font-size: 26px !important;
+}
+
+.nv .brand-logo {
+    height: 110px !important;
+}
 
 
+.nv .hero .lead-text {
+    font-size: 16px !important;
+}
 
+.nv .dot-list {
+        display: flex;
+    flex-wrap: wrap;
+    row-gap: 0px !important;
+    line-height: 14px;
+}
+
+.nv .dot-list li {
+    font-size: 13px;
+}
+.about-2 {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.about-collage-img-primary {
+    margin-top: 28px;
+}
+.about-why-section {
+    padding: 50px 0;
+}
+.about-intro-section {
+    padding: 50px 0;
+}
+.about-director-section {
+    padding: 50px 0;
+}
+.about-cover-section {
+    padding: 10px 0;
+}
+.about-banner-section {
+    padding: 24px 0;
+}
             
         </style>
         
@@ -1330,7 +1373,7 @@ header .sub_header ul .onhover-div .shoping-prize, header .sub_header ul li .sho
 <div class="whatsapp-tooltip">
     Chat with us
   </div>
-  <a href="https://wa.me/447782273969" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <a href="https://wa.me/8801812370181" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
         

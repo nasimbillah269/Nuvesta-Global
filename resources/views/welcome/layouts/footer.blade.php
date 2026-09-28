@@ -7,7 +7,7 @@
     <div class="footer-grid">
       <div>
         <a href="{{route('index')}}" class="brand">
-          <img src="{{asset('welcome/images/home/logo-white.png')}}" alt="{{general()->title ?: 'Nuvesta Global LLC'}}" class="brand-logo">
+          <img src="{{asset('welcome/images/home/WhatsApp Image 2026-09-27 at 3.13.55 PM.jpg')}}" alt="{{general()->title ?: 'Nuvesta Global LLC'}}" class="brand-logo">
         </a>
         <p class="footer-tag">Global Apparel Sourcing &amp; Product Development</p>
       </div>

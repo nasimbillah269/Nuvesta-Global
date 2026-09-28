@@ -259,7 +259,7 @@ class WelcomeController extends Controller
           //->select(['id','name','slug','addedby_id','created_at'])
           ->whereDate('created_at','<=',date('Y-m-d'));
         
-        $products = $query->latest()->paginate(20);
+        $products = $query->latest()->paginate(20)->appends($r->query());
         
         // Get min and max final_price
         $minPrice = round($query->min('min_price'));
@@ -363,7 +363,7 @@ class WelcomeController extends Controller
                 break;
         }
         
-        $products = $query->paginate(12);
+        $products = $query->paginate(12)->appends($r->query());
         
         $colName='col-md-3';
         $viewData =View(welcomeTheme().'products.includes.productsAll',compact('products','colName'))->render();
@@ -593,6 +593,11 @@ class WelcomeController extends Controller
       if($page->template=='Service'){
 
         return view(welcomeTheme().'pages.service',compact('page'));
+      }
+      
+      //Quality & Compliance Page
+      if($page->template=='Quality & Compliance'){
+        return view(welcomeTheme().'pages.Quality&Compliance',compact('page'));
       }
       
       //Product Request Page
