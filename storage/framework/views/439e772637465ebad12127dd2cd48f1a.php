@@ -2,7 +2,8 @@
 <section class="hero">
   <?php
     $heroSlider = slider('Front Page Slider');
-    $heroSlides = $heroSlider ? $heroSlider->subSliders()->whereHas('imageFile')->get() : collect();
+    $heroSlides = $heroSlider ? $heroSlider->subSliders()->whereHas('imageFile')->get()
+                    ->filter(function($slide){ return file_exists(public_path($slide->image())); })->values() : collect();
   ?>
   <?php if($heroSlides->count() > 0): ?>
   <div class="hero-img hero-img-slider" data-aos="zoom-out" data-aos-duration="1400">

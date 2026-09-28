@@ -164,7 +164,7 @@
             <div class="col-md-6">
                 <div class="whoLeft">
                     <h4>
-                        Who Are You
+                       Who We Are
                     </h4>
                     <p>
 
