@@ -56,7 +56,10 @@
         
         <style>
         
+.nv p {
 
+    text-align: justify;
+}
         
         
         .appointment-left h2 {
