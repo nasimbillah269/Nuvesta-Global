@@ -189,6 +189,7 @@
                                         <option value="Latest Products" {{$page->template=='Latest Products'?'selected':''}}>Latest Products</option>
                                         <option value="All Brands" {{$page->template=='All Brands'?'selected':''}}>All Brands</option>
                                         <option value="About Us" {{$page->template=='About Us'?'selected':''}}>About Us</option>
+                                        <option value="Quality & Compliance" {{$page->template=='Quality & Compliance'?'selected':''}}>Quality & Compliance</option>
                                         <option value="Get A Quote" {{$page->template=='Get A Quote'?'selected':''}}>Get A Quote</option>
                                         <option value="Service" {{$page->template=='Service'?'selected':''}}>Service</option>
                                         <option value="Contact Us" {{$page->template=='Contact Us'?'selected':''}}>Contact Us</option>

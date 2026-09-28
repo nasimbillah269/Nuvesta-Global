@@ -1,116 +1,25 @@
-@extends(welcomeTheme().'layouts.app') @section('title')
-<title>{{$page->seo_title?:websiteTitle($page->name)}}</title>
-@endsection @section('SEO')
-<meta name="title" property="og:title" content="{{$page->seo_title?:websiteTitle($page->name)}}" />
-<meta name="description" property="og:description" content="{!!$page->seo_description?:general()->meta_description!!}" />
-<meta name="keywords" content="{{$page->seo_keyword?:general()->meta_keyword}}" />
-<meta name="image" property="og:image" content="{{asset($page->image())}}" />
-<meta name="url" property="og:url" content="{{route('pageView',$page->slug?:'no-title')}}" />
-<link rel="canonical" href="{{route('pageView',$page->slug?:'no-title')}}">
-@endsection
-@push('css')
+ <?php $__env->startSection('title'); ?>
+<title><?php echo e($page->seo_title?:websiteTitle($page->name)); ?></title>
+<?php $__env->stopSection(); ?> <?php $__env->startSection('SEO'); ?>
+<meta name="title" property="og:title" content="<?php echo e($page->seo_title?:websiteTitle($page->name)); ?>" />
+<meta name="description" property="og:description" content="<?php echo $page->seo_description?:general()->meta_description; ?>" />
+<meta name="keywords" content="<?php echo e($page->seo_keyword?:general()->meta_keyword); ?>" />
+<meta name="image" property="og:image" content="<?php echo e(asset($page->image())); ?>" />
+<meta name="url" property="og:url" content="<?php echo e(route('pageView',$page->slug?:'no-title')); ?>" />
+<link rel="canonical" href="<?php echo e(route('pageView',$page->slug?:'no-title')); ?>">
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('css'); ?>
 <style>
 
 </style>
-@endpush @section('contents')
+<?php $__env->stopPush(); ?> <?php $__env->startSection('contents'); ?>
 
-{{--<div class="pageTitleHeader">
-    <div class="container">
-        <h1>{{$page->name}}</h1>
-    </div>
-</div>--}}
 
-{{--<div class="contactInfoMain">
-    <div class="container">
-        <h4>Get in touch with us!</h4>
-        <div class="row mt-5">
-            <div class="col-md-4">
-                <div class="contactInfoGrid">
-                    <span><i class="fa fa-phone" aria-hidden="true"></i></span>
-                    <p>{{general()->mobile}}</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="contactInfoGrid borderBox">
-                    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                    <p>{{general()->address_one}}</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="contactInfoGrid">
-                    <span><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                    <p>{{general()->email}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>--}}
+
+
 
 <!-- home appoinment form start -->
-{{--<div class="homeAppoinmentFormPart">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <h2>Schedule Your Appointment Today</h2>
-                @if(Session::has('success'))
-                <div class="alert alert-success alert-dismissable">
-                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">脳</button>
-                    <strong>Success! </strong> {{Session::get('success')}}.
-                </div>
-                @endif
-                <form action="{{route('contactMail')}}" method="post">
-                    @csrf
-                    <p>If you got any quary please feel free to send us a message_</p>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                @if ($errors->has('name'))
-                                <p style="color: red; margin: 0; font-size: 10px;">{{ $errors->first('name') }}</p>
-                                @endif
-                                <input type="name" name="name" value="" class="form-control control-section" placeholder="Your Name" required="" />
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                @if ($errors->has('email'))
-                                <p style="color: red; margin: 0; font-size: 10px;">{{ $errors->first('email') }}</p>
-                                @endif
-                                <input type="email" name="email" value="" class="form-control control-section" placeholder="Your Email" required="" />
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                @if ($errors->has('phone'))
-                                <p style="color: red; margin: 0; font-size: 10px;">{{ $errors->first('phone') }}</p>
-                                @endif
-                                <input type="phone" name="phone" value="" class="form-control control-section" placeholder="Phone Number" required="" />
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                @if ($errors->has('subject'))
-                                <p style="color: red; margin: 0; font-size: 10px;">{{ $errors->first('subject') }}</p>
-                                @endif
-                                <input type="subject" name="subject" value="" class="form-control control-section" placeholder="Subject" required="" />
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                @if ($errors->has('message'))
-                                <p style="color: red; margin: 0; font-size: 10px;">{{ $errors->first('message') }}</p>
-                                @endif
-                                <textarea name="message" rows="5" value="" class="form-control control-section" placeholder="Write Your Massege" required=""></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit">SEND MESSAGE</button>
-                </form>
-            </div>
-            <div class="col-md-1"></div>
-        </div>
-    </div>
-</div>--}}
+
 <!-- home appoinment form end -->
 
 
@@ -202,50 +111,51 @@
                         <h3 class="contact-form-title">Send a Message</h3>
                         
                         
-                     @if(Session::has('success'))
+                     <?php if(Session::has('success')): ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Success! </strong> {{ Session::get('success') }}
+                            <strong>Success! </strong> <?php echo e(Session::get('success')); ?>
+
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
-                    @endif
+                    <?php endif; ?>
                         
-                        <form action="{{route('contactMail')}}" method="post" class="nuvesta-contact-form">
-                             @csrf
+                        <form action="<?php echo e(route('contactMail')); ?>" method="post" class="nuvesta-contact-form">
+                             <?php echo csrf_field(); ?>
                             <div class="row g-4">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="contactName" class="form-label">Full Name</label>
                                         <input type="text" id="contactName" name="name" value="" class="form-control contact-input" placeholder="Enter your name" required>
-                                         @if ($errors->has('name'))
-                                            <p style="color: red; margin: 0; font-size: 10px;">{{ $errors->first('name') }}</p>
-                                            @endif
+                                         <?php if($errors->has('name')): ?>
+                                            <p style="color: red; margin: 0; font-size: 10px;"><?php echo e($errors->first('name')); ?></p>
+                                            <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="contactEmail" class="form-label">Email Address</label>
                                         <input type="email" id="contactEmail" name="email" value="" class="form-control contact-input" placeholder="Enter your email" required>
-                                         @if ($errors->has('email'))
-                                            <p style="color: red; margin: 0; font-size: 10px;">{{ $errors->first('email') }}</p>
-                                          @endif
+                                         <?php if($errors->has('email')): ?>
+                                            <p style="color: red; margin: 0; font-size: 10px;"><?php echo e($errors->first('email')); ?></p>
+                                          <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="contactSubject" class="form-label">Subject</label>
                                         <input type="text" id="contactSubject" name="subject" value="" class="form-control contact-input" placeholder="Subject of your message" required>
-                                         @if ($errors->has('subject'))
-                                        <p style="color: red; margin: 0; font-size: 10px;">{{ $errors->first('subject') }}</p>
-                                        @endif
+                                         <?php if($errors->has('subject')): ?>
+                                        <p style="color: red; margin: 0; font-size: 10px;"><?php echo e($errors->first('subject')); ?></p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="contactMessage" class="form-label">Message</label>
                                         <textarea id="contactMessage" rows="6" name="message" class="form-control contact-textarea" placeholder="Write your message here..." required></textarea>
-                                          @if ($errors->has('message'))
-                                                <p style="color: red; margin: 0; font-size: 10px;">{{ $errors->first('message') }}</p>
-                                                @endif
+                                          <?php if($errors->has('message')): ?>
+                                                <p style="color: red; margin: 0; font-size: 10px;"><?php echo e($errors->first('message')); ?></p>
+                                                <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="col-12 mt-4">
@@ -280,8 +190,10 @@
 
 
 
-@endsection
-@push('js')
-@endpush
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('js'); ?>
+<?php $__env->stopPush(); ?>
 
 
+
+<?php echo $__env->make(welcomeTheme().'layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/nithostrb/public_html/nuvesta.nit.hostrb.com/resources/views/welcome/pages/contactUs.blade.php ENDPATH**/ ?>

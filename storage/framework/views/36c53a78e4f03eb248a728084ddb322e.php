@@ -1,15 +1,15 @@
-@extends(welcomeTheme().'layouts.app') @section('title')
-<title>{{$page->seo_title?:websiteTitle($page->name)}}</title>
-@endsection @section('SEO')
-<meta name="title" property="og:title" content="{{$page->seo_title?:websiteTitle($page->name)}}" />
-<meta name="description" property="og:description" content="{!!$page->seo_description?:general()->meta_description!!}" />
-<meta name="keywords" content="{{$page->seo_keyword?:general()->meta_keyword}}" />
-<meta name="image" property="og:image" content="{{asset($page->image())}}" />
-<meta name="url" property="og:url" content="{{route('pageView',$page->slug?:'no-title')}}" />
-<link rel="canonical" href="{{route('pageView',$page->slug?:'no-title')}}" />
-@endsection @push('css')
+ <?php $__env->startSection('title'); ?>
+<title><?php echo e($page->seo_title?:websiteTitle($page->name)); ?></title>
+<?php $__env->stopSection(); ?> <?php $__env->startSection('SEO'); ?>
+<meta name="title" property="og:title" content="<?php echo e($page->seo_title?:websiteTitle($page->name)); ?>" />
+<meta name="description" property="og:description" content="<?php echo $page->seo_description?:general()->meta_description; ?>" />
+<meta name="keywords" content="<?php echo e($page->seo_keyword?:general()->meta_keyword); ?>" />
+<meta name="image" property="og:image" content="<?php echo e(asset($page->image())); ?>" />
+<meta name="url" property="og:url" content="<?php echo e(route('pageView',$page->slug?:'no-title')); ?>" />
+<link rel="canonical" href="<?php echo e(route('pageView',$page->slug?:'no-title')); ?>" />
+<?php $__env->stopSection(); ?> <?php $__env->startPush('css'); ?>
 <style></style>
-@endpush @section('contents')
+<?php $__env->stopPush(); ?> <?php $__env->startSection('contents'); ?>
 
     <!-- ==========================================================================
          1. SERVICES MINIMAL HEADER COVER
@@ -28,37 +28,7 @@
     <!-- ==========================================================================
          2. INTRO BANNER (EDITORIAL STATEMENT)
          ========================================================================== -->
-    {{--<section class="services-intro-section" data-aos="fade-up" style="padding: 80px 0;">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6">
-                    <span class="services-section-badge">Global Sourcing</span>
-                    <h2 class="services-intro-title" style="margin-bottom: 20px;">Connecting Brands with Reliable Apparel Solutions</h2>
-                    <p class="services-intro-text" style="margin-bottom: 30px;">
-                        Nuvesta Global LLC provides complete apparel sourcing and supply chain services for international brands. From factory sourcing and product development to quality control and logistics, we ensure efficient, reliable, and on-time delivery.
-                    </p>
-                    <div class="services-intro-highlight" style="padding: 20px; background-color: #f8f9fa; border-left: 4px solid #f2424b; border-radius: 4px;">
-                        <strong class="d-block text-dark mb-1">Dhaka & Vilnius Offices</strong>
-                        <span class="text-muted small">Seamless European coordination with direct Bangladesh manufacturing power.</span>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="services-intro-image-wrap position-relative">
-                        <img src="https://images.unsplash.com/photo-1520006403909-838d6b92c22e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Garment Buying House Showroom" class="img-fluid rounded" style="box-shadow: 0 20px 40px rgba(0,0,0,0.08); width: 100%; object-fit: cover; height: 450px;">
-                        <div class="position-absolute bg-white p-3 rounded shadow-sm d-flex align-items-center gap-3" style="bottom: -20px; left: -20px;">
-                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background-color: #0f2957 !important;">
-                                <i class="fa-solid fa-check-double"></i>
-                            </div>
-                            <div>
-                                <h6 class="mb-0 fw-bold" style="color: #0f2957;">100% Quality</h6>
-                                <small class="text-muted">Assurance</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>--}}
+    
 
     <!-- ==========================================================================
          3. WHAT WE OFFER (HIGH-CONTRAST BENTO GRID)
@@ -381,4 +351,5 @@
 
 
 
-@endsection @push('js') @endpush
+<?php $__env->stopSection(); ?> <?php $__env->startPush('js'); ?> <?php $__env->stopPush(); ?>
+<?php echo $__env->make(welcomeTheme().'layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/nithostrb/public_html/nuvesta.nit.hostrb.com/resources/views/welcome/pages/service.blade.php ENDPATH**/ ?>

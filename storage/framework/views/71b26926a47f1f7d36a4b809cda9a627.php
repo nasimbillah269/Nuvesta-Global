@@ -7,12 +7,12 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{csrf_token()}}" />
+        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
 
-        @yield('title')
+        <?php echo $__env->yieldContent('title'); ?>
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset(general()->favicon())}}" />
-        @yield('SEO')
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset(general()->favicon())); ?>" />
+        <?php echo $__env->yieldContent('SEO'); ?>
 
 
        
@@ -23,24 +23,24 @@
      <!-- Bootstrap Icons-->
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
      <!-- Font Awesome-->
-     <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/vendors/fontawesome.css')}}" />
+     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/vendors/fontawesome.css')); ?>" />
      <!-- Iconsax icon-->
-     <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/vendors/iconsax.css')}}" />
+     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/vendors/iconsax.css')); ?>" />
      <!-- Bootstrap css-->
-     <link rel="stylesheet" type="text/css" id="rtl-link" href="{{asset('welcome/assets/css/vendors/bootstrap.css')}}" />
-     <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/vendors/swiper-slider/swiper-bundle.min.css')}}" />
-     <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/vendors/toastify.css')}}" />
-     <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/style.css')}}" />
-     <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/newStyle.css')}}" />
-     <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/productsdeta.css')}}" />
-     <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/coustomeV1.css')}}" />
-     <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/respon.css')}}" />
+     <link rel="stylesheet" type="text/css" id="rtl-link" href="<?php echo e(asset('welcome/assets/css/vendors/bootstrap.css')); ?>" />
+     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/vendors/swiper-slider/swiper-bundle.min.css')); ?>" />
+     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/vendors/toastify.css')); ?>" />
+     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/style.css')); ?>" />
+     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/newStyle.css')); ?>" />
+     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/productsdeta.css')); ?>" />
+     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/coustomeV1.css')); ?>" />
+     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/respon.css')); ?>" />
      
        <!-- Slick Slider CSS CDN-->
-        <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/slick.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/slick-theme.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/jquery.fancybox.css')}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/jquery.fancybox.min.css')}}" />
+        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/slick.css')); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/slick-theme.css')); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/jquery.fancybox.css')); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/jquery.fancybox.min.css')); ?>" />
        
                <!-- Bootstrap CS CDN -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
@@ -1296,8 +1296,8 @@ header .sub_header ul .onhover-div .shoping-prize, header .sub_header ul li .sho
             {
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "{{websiteTitle()}}",
-              "url": "{{ url('/') }}",
+              "name": "<?php echo e(websiteTitle()); ?>",
+              "url": "<?php echo e(url('/')); ?>",
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": "https://shoukhincloset.com/search?search={search_term_string}",
@@ -1307,18 +1307,20 @@ header .sub_header ul .onhover-div .shoping-prize, header .sub_header ul li .sho
             </script>
         
         <!-- Nuvesta design (loaded last so the old theme can't override it) -->
-        <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/newHome.css')}}" />
-        @stack('css')
+        <link rel="stylesheet" type="text/css" href="<?php echo e(asset('welcome/assets/css/newHome.css')); ?>" />
+        <?php echo $__env->yieldPushContent('css'); ?>
         
         
-        {!!general()->script_head!!}
+        <?php echo general()->script_head; ?>
+
         
         
     </head>
     
     <body class="skeleton_body">
         
-        {!!general()->script_body!!}
+        <?php echo general()->script_body; ?>
+
         
         
         <!--<span class="cursor"><span class="cursor-move-inner"><span class="cursor-inner"></span></span><span class="cursor-move-outer"><span class="cursor-outer"></span></span></span>-->
@@ -1330,10 +1332,10 @@ header .sub_header ul .onhover-div .shoping-prize, header .sub_header ul li .sho
        <div class="offcanvas-body theme-scrollbar">
          <div class="container">
            <h3>What are you trying  find? </h3>
-           <form action="{{route('search')}}" class="searchHeaderArea">
+           <form action="<?php echo e(route('search')); ?>" class="searchHeaderArea">
                
            <div class="search-box" id="searchHeaderInput"> 
-             <input type="search" name="text" name="search" value="{{request()->search}}" placeholder="I'm looking for" /><i class="iconsax" data-icon="search-normal-2"></i>
+             <input type="search" name="text" name="search" value="<?php echo e(request()->search); ?>" placeholder="I'm looking for" /><i class="iconsax" data-icon="search-normal-2"></i>
            </div>
            </form>
            <h4>Your Search Result </h4>
@@ -1379,22 +1381,22 @@ header .sub_header ul .onhover-div .shoping-prize, header .sub_header ul li .sho
         
         
         <div class="offcanvas offcanvas-end shopping-details" id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel">
-            @include(welcomeTheme().'carts.includes.headerCartBox')
+            <?php echo $__env->make(welcomeTheme().'carts.includes.headerCartBox', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </div>
         
         <!--Header Part Include Start-->
-        @include(general()->theme.'.layouts.header')
+        <?php echo $__env->make(general()->theme.'.layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <!--Main Section Start-->
         <div class="mainContentArea" style="min-height:500px;">
-        @yield('contents')
+        <?php echo $__env->yieldContent('contents'); ?>
         </div>
         <!--Main Section End-->
         
         
         
          <!--Footer Part Include Start-->
-        @include(general()->theme.'.layouts.footer')
+        <?php echo $__env->make(general()->theme.'.layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         
         
 <!-- jQuery FIRST -->
@@ -1403,36 +1405,36 @@ header .sub_header ul .onhover-div .shoping-prize, header .sub_header ul li .sho
 
 
 <!-- Bootstrap js-->
-     <script src="{{asset('welcome/assets/js/bootstrap/bootstrap.bundle.min.js')}}"></script>
+     <script src="<?php echo e(asset('welcome/assets/js/bootstrap/bootstrap.bundle.min.js')); ?>"></script>
      <!-- iconsax js -->
-     <script src="{{asset('welcome/assets/js/iconsax.js')}}"> </script>
+     <script src="<?php echo e(asset('welcome/assets/js/iconsax.js')); ?>"> </script>
      <!-- cursor js-->
-     <script src="{{asset('welcome/assets/js/stats.min.js')}}"> </script>
-     <!--<script src="{{asset('welcome/assets/js/cursor.js')}}"> </script>-->
-     <script src="{{asset('welcome/assets/js/swiper-slider/swiper-bundle.min.js')}}"></script>
-     <script src="{{asset('welcome/assets/js/swiper-slider/swiper-custom.js')}}"></script>
-     <script src="{{asset('welcome/assets/js/countdown.js')}}"></script>
-     <script src="{{asset('welcome/assets/js/newsletter.js')}}"></script>
-     <script src="{{asset('welcome/assets/js/skeleton-loader.js')}}"></script>
+     <script src="<?php echo e(asset('welcome/assets/js/stats.min.js')); ?>"> </script>
+     <!--<script src="<?php echo e(asset('welcome/assets/js/cursor.js')); ?>"> </script>-->
+     <script src="<?php echo e(asset('welcome/assets/js/swiper-slider/swiper-bundle.min.js')); ?>"></script>
+     <script src="<?php echo e(asset('welcome/assets/js/swiper-slider/swiper-custom.js')); ?>"></script>
+     <script src="<?php echo e(asset('welcome/assets/js/countdown.js')); ?>"></script>
+     <script src="<?php echo e(asset('welcome/assets/js/newsletter.js')); ?>"></script>
+     <script src="<?php echo e(asset('welcome/assets/js/skeleton-loader.js')); ?>"></script>
      <!-- touchspin-->
-     <script src="{{asset('welcome/assets/js/touchspin.js')}}"></script>
+     <script src="<?php echo e(asset('welcome/assets/js/touchspin.js')); ?>"></script>
      <!-- cookie js-->
-     <script src="{{asset('welcome/assets/js/cookie.js')}}"></script>
+     <script src="<?php echo e(asset('welcome/assets/js/cookie.js')); ?>"></script>
      <!-- tost js -->
-     <script src="{{asset('welcome/assets/js/toastify.js')}}"></script>
-     <script src="{{asset('welcome/assets/js/theme-setting.js')}}"></script>
+     <script src="<?php echo e(asset('welcome/assets/js/toastify.js')); ?>"></script>
+     <script src="<?php echo e(asset('welcome/assets/js/theme-setting.js')); ?>"></script>
      <!-- Theme js-->
-     <script src="{{asset('welcome/assets/js/script.js')}}"></script>
+     <script src="<?php echo e(asset('welcome/assets/js/script.js')); ?>"></script>
      
              <!-- Bootstrap Script  CDN-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
      
            <!-- Custom Script for this Design -->
         
-        <script src="{{asset('welcome/assets/js/animation.js')}}"></script>
-        <script src="{{asset('welcome/assets/js/slick.js')}}"></script>
-        <script src="{{asset('welcome/assets/js/slick.min.js')}}"></script>
-        <script src="{{asset('welcome/assets/js/jquery.fancybox.min.js')}}"></script>
+        <script src="<?php echo e(asset('welcome/assets/js/animation.js')); ?>"></script>
+        <script src="<?php echo e(asset('welcome/assets/js/slick.js')); ?>"></script>
+        <script src="<?php echo e(asset('welcome/assets/js/slick.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('welcome/assets/js/jquery.fancybox.min.js')); ?>"></script>
      
          <!-- Slick Slider JS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -1542,7 +1544,7 @@ $(document).ready(function () {
             $('.hero-sectionClick').on('click', function (e) {
                 e.preventDefault();
             
-                var homeUrl = '/'; // or "{{ url('/') }}"
+                var homeUrl = '/'; // or "<?php echo e(url('/')); ?>"
                 var targetId = 'offers';
                 if (window.location.pathname === '/' || window.location.pathname === '/home') {
             
@@ -1753,7 +1755,7 @@ $(document).ready(function () {
                 //     var search =$(this).val();
                     
                 //     if(search.length > 0){
-                //         var url ="{{route('search')}}";
+                //         var url ="<?php echo e(route('search')); ?>";
                 //         $.ajax({
                 //           url: url,
                 //           type: 'GET',
@@ -1779,7 +1781,7 @@ $(document).ready(function () {
                       if(id==''){
                        $('#city').empty().append('<option value="">No City</option>');
                       }
-                      var url ='{{url('geo/filter')}}' + '/'+id;
+                      var url ='<?php echo e(url('geo/filter')); ?>' + '/'+id;
                       $.get(url,function(data){
                         $('#city').empty().append(data.geoData);  
                       });   
@@ -1949,7 +1951,8 @@ $(document).ready(function () {
             }
         </script>
         
-        @stack('js')
+        <?php echo $__env->yieldPushContent('js'); ?>
         
     </body>
 </html>
+<?php /**PATH /home/nithostrb/public_html/nuvesta.nit.hostrb.com/resources/views/welcome/layouts/app.blade.php ENDPATH**/ ?>

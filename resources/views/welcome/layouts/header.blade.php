@@ -46,7 +46,7 @@
             <a href="{{$menuUrl($btn)}}" {!!$target($btn)!!} class="nv-btn {{$loop->first ? 'nv-btn-navy' : 'nv-btn-outline'}} d-none d-sm-inline-flex">{{$btn->menuName()}}</a>
           @endforeach
         @else
-          <a href="{{$quoteUrl}}" class="nv-btn nv-btn-navy d-none d-sm-inline-flex">Request an RFQ</a>
+          <a href="{{$quoteUrl}}" class="nv-btn nv-btn-navy d-none d-sm-inline-flex">Enquiry</a>
         @endif
         <button type="button" class="header-search" data-nv-search-open aria-label="Search" aria-haspopup="dialog" aria-controls="nvSearch"><i class="bi bi-search"></i></button>
         <button class="navbar-toggler nv-burger" type="button" data-nv-drawer-open aria-controls="nvDrawer" aria-expanded="false" aria-label="Open menu">

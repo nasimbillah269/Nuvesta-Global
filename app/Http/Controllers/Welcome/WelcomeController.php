@@ -595,6 +595,11 @@ class WelcomeController extends Controller
         return view(welcomeTheme().'pages.service',compact('page'));
       }
       
+      //Quality & Compliance Page
+      if($page->template=='Quality & Compliance'){
+        return view(welcomeTheme().'pages.Quality&Compliance',compact('page'));
+      }
+      
       //Product Request Page
       if($page->template=='Product Request'){
         if(!Auth::check()){

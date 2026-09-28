@@ -1,20 +1,20 @@
-@extends(welcomeTheme().'layouts.app') @section('title')
-<title>{{$page->seo_title?:websiteTitle($page->name)}}</title>
-@endsection @section('SEO')
-<meta name="title" property="og:title" content="{{$page->seo_title?:websiteTitle($page->name)}}" />
-<meta name="description" property="og:description" content="{!!$page->seo_description?:general()->meta_description!!}" />
-<meta name="keywords" content="{{$page->seo_keyword?:general()->meta_keyword}}" />
-<meta name="image" property="og:image" content="{{asset($page->image())}}" />
-<meta name="url" property="og:url" content="{{route('pageView',$page->slug?:'no-title')}}" />
-<link rel="canonical" href="{{route('pageView',$page->slug?:'no-title')}}">
-@endsection
-@push('css')
+ <?php $__env->startSection('title'); ?>
+<title><?php echo e($page->seo_title?:websiteTitle($page->name)); ?></title>
+<?php $__env->stopSection(); ?> <?php $__env->startSection('SEO'); ?>
+<meta name="title" property="og:title" content="<?php echo e($page->seo_title?:websiteTitle($page->name)); ?>" />
+<meta name="description" property="og:description" content="<?php echo $page->seo_description?:general()->meta_description; ?>" />
+<meta name="keywords" content="<?php echo e($page->seo_keyword?:general()->meta_keyword); ?>" />
+<meta name="image" property="og:image" content="<?php echo e(asset($page->image())); ?>" />
+<meta name="url" property="og:url" content="<?php echo e(route('pageView',$page->slug?:'no-title')); ?>" />
+<link rel="canonical" href="<?php echo e(route('pageView',$page->slug?:'no-title')); ?>">
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('css'); ?>
 <style>
 
 </style>
-@endpush 
+<?php $__env->stopPush(); ?> 
 
-@section('contents')
+<?php $__env->startSection('contents'); ?>
 
 
     <!-- ==========================================================================
@@ -103,7 +103,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
                     <div class="about-collage-wrap">
                         <div class="about-collage-bg-block"></div>
                         <div class="about-collage-img-primary">
-                            <img src="{{asset('welcome/images/home/WhatsApp Image 2026-09-27 at 3.00.36 PM.jpeg')}}" alt="Garment factory environment">
+                            <img src="<?php echo e(asset('welcome/images/home/WhatsApp Image 2026-09-27 at 3.00.36 PM.jpeg')); ?>" alt="Garment factory environment">
                         </div>
                         <div class="about-collage-img-secondary">
                             <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=500&h=375&q=80"
@@ -205,7 +205,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
 
                 <!-- Right: Content Grid Part 2 -->
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
-                    <img class="about-2" src="{{asset('welcome/images/home/about-page.jpeg')}}" alt="Garment factory environment">
+                    <img class="about-2" src="<?php echo e(asset('welcome/images/home/about-page.jpeg')); ?>" alt="Garment factory environment">
                 </div>
             </div>
         </div>
@@ -221,7 +221,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
                 <div class="col-lg-4 col-md-5" data-aos="fade-up">
                     <div class="about-director-card">
                         <div class="about-director-img-wrap">
-                            <img src="{{asset('welcome/images/home/founder.jpg')}}" alt="MD Ariful Islam">
+                            <img src="<?php echo e(asset('welcome/images/home/founder.jpg')); ?>" alt="MD Ariful Islam">
                         </div>
                         <div class="about-director-meta">
                             <h3 class="about-director-name">Md Ariful Islam</h3>
@@ -287,7 +287,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
                 <div class="col-lg-4 col-md-5" data-aos="fade-up">
                     <div class="about-director-card">
                         <div class="about-director-img-wrap">
-                            <img src="{{asset('welcome/images/home/professional-male-avatar-profile-picture-employee-work_1322206-66523.webp')}}" alt="MD Ariful Islam">
+                            <img src="<?php echo e(asset('welcome/images/home/professional-male-avatar-profile-picture-employee-work_1322206-66523.webp')); ?>" alt="MD Ariful Islam">
                         </div>
                         <div class="about-director-meta">
                             <h3 class="about-director-name">Abu Shadath Sayem Khan</h3>
@@ -308,150 +308,12 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
     <!-- ==========================================================================
          5. SECTION 4: OUR SERVICES (HOVER DRAW BLOCKS)
          ========================================================================== -->
-    {{--<section class="about-services-section">
-        <div class="container">
-            <div class="text-center" data-aos="fade-up">
-                <span class="about-intro-label">WHY NUVESTA</span>
-                <h2 class="about-intro-title mb-5">Experience That Understands the Product</h2>
-                <p>
-                    Instead of simply connecting buyers with factories, Nuvesta brings 
-                    together product knowledge, sourcing experience and commercial understanding.
-                </p>
-            </div>
-
-            <div class="about-services-grid">
-                <!-- Service 1 -->
-                <div class="about-service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="about-service-header">
-                        <div class="about-service-icon-box">
-                            <i class="fa-solid fa-shirt"></i>
-                        </div>
-                        <i class="fa-solid fa-arrow-right-long about-service-arrow"></i>
-                    </div>
-                    <h3 class="about-service-title">26+ Years of Apparel Experience</h3>
-                    <p class="about-service-desc">Merchandising • Costing • Product Development • Production • Procurement • Sourcing</p>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="about-service-card" data-aos="fade-up" data-aos-delay="150">
-                    <div class="about-service-header">
-                        <div class="about-service-icon-box">
-                            <i class="fa-solid fa-compass-drafting"></i>
-                        </div>
-                        <i class="fa-solid fa-arrow-right-long about-service-arrow"></i>
-                    </div>
-                    <h3 class="about-service-title">Bangladesh Manufacturing Access</h3>
-                    <p class="about-service-desc">A sourcing network covering woven, knit, denim, outerwear and other apparel categories.</p>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="about-service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="about-service-header">
-                        <div class="about-service-icon-box">
-                            <i class="fa-solid fa-circle-check"></i>
-                        </div>
-                        <i class="fa-solid fa-arrow-right-long about-service-arrow"></i>
-                    </div>
-                    <h3 class="about-service-title">Buyer-Focused Communication</h3>
-                    <p class="about-service-desc">One accountable sourcing contact from inquiry through shipment.</p>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="about-service-card" data-aos="fade-up" data-aos-delay="250">
-                    <div class="about-service-header">
-                        <div class="about-service-icon-box">
-                            <i class="fa-solid fa-calendar-check"></i>
-                        </div>
-                        <i class="fa-solid fa-arrow-right-long about-service-arrow"></i>
-                    </div>
-                    <h3 class="about-service-title">Commercially Practical</h3>
-                    <p class="about-service-desc">We understand the relationship between:</p>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="about-service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="about-service-header">
-                        <div class="about-service-icon-box">
-                            <i class="fa-solid fa-boxes-packing"></i>
-                        </div>
-                        <i class="fa-solid fa-arrow-right-long about-service-arrow"></i>
-                    </div>
-                    <h3 class="about-service-title">Fabric → Construction → Consumption → Trims → CM → FOB → Target Price</h3>
-                    <p class="about-service-desc">
-                        That is one of the areas where your personal 26-year apparel background can become a major Nuvesta differentiator.
-                    </p>
-                </div>
-
-                <!-- Service 6 -->
-                <!--<div class="about-service-card" data-aos="fade-up" data-aos-delay="350">-->
-                <!--    <div class="about-service-header">-->
-                <!--        <div class="about-service-icon-box">-->
-                <!--            <i class="fa-solid fa-ship"></i>-->
-                <!--        </div>-->
-                <!--        <i class="fa-solid fa-arrow-right-long about-service-arrow"></i>-->
-                <!--    </div>-->
-                <!--    <h3 class="about-service-title">Logistics & Shipping</h3>-->
-                <!--    <p class="about-service-desc">Coordinating booking slots, export customs documentation, and freight loading structures.</p>-->
-                <!--</div>-->
-            </div>
-        </div>
-    </section>--}}
+    
 
     <!-- ==========================================================================
          6. SECTION 5: OUR PROCESS (DYNAMIC TIMELINE FLOW)
          ========================================================================== -->
-    {{--<section class="about-process-section">
-        <div class="container">
-            <div class="text-center" data-aos="fade-up">
-                <span class="about-intro-label">Operations</span>
-                <h2 class="about-intro-title mb-5">Our Process</h2>
-            </div>
-
-            <div class="about-process-grid">
-                <!-- Step 1 -->
-                <div class="about-process-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="about-process-num-circle">1</div>
-                    <h4 class="about-process-step-title">Requirement Analysis</h4>
-                    <p class="about-process-step-desc">Gathering style specs and target milestones.</p>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="about-process-item" data-aos="fade-up" data-aos-delay="150">
-                    <div class="about-process-num-circle">2</div>
-                    <h4 class="about-process-step-title">Design Development</h4>
-                    <p class="about-process-step-desc">Refining sketches, selecting materials and samples.</p>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="about-process-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="about-process-num-circle">3</div>
-                    <h4 class="about-process-step-title">Factory Sourcing</h4>
-                    <p class="about-process-step-desc">Matching order specs with certified facilities.</p>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="about-process-item" data-aos="fade-up" data-aos-delay="250">
-                    <div class="about-process-num-circle">4</div>
-                    <h4 class="about-process-step-title">Order Execution</h4>
-                    <p class="about-process-step-desc">Managing production timelines and workflow monitoring.</p>
-                </div>
-
-                <!-- Step 5 -->
-                <div class="about-process-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="about-process-num-circle">5</div>
-                    <h4 class="about-process-step-title">Final Inspection</h4>
-                    <p class="about-process-step-desc">Running AQL final quality assurance audits.</p>
-                </div>
-
-                <!-- Step 6 -->
-                <div class="about-process-item" data-aos="fade-up" data-aos-delay="350">
-                    <div class="about-process-num-circle">6</div>
-                    <h4 class="about-process-step-title">Delivery</h4>
-                    <p class="about-process-step-desc">Coordinating logistics and customs booking pipelines.</p>
-                </div>
-            </div>
-        </div>
-    </section>--}}
+    
 
     <!-- ==========================================================================
          7. TOP QUALITY CTA CONSULTATION BANNER
@@ -468,8 +330,10 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
 
 
 
-@endsection 
-@push('js') 
-@endpush
+<?php $__env->stopSection(); ?> 
+<?php $__env->startPush('js'); ?> 
+<?php $__env->stopPush(); ?>
 
 
+
+<?php echo $__env->make(welcomeTheme().'layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/nithostrb/public_html/nuvesta.nit.hostrb.com/resources/views/welcome/pages/aboutUs.blade.php ENDPATH**/ ?>
