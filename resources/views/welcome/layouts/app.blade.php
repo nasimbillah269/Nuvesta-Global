@@ -1312,7 +1312,7 @@ header .sub_header ul .onhover-div .shoping-prize, header .sub_header ul li .sho
             </script>
         
         <!-- Nuvesta design (loaded last so the old theme can't override it) -->
-        <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/newHome.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('welcome/assets/css/newHome.css')}}?v={{@filemtime(public_path('welcome/assets/css/newHome.css'))}}" />
         @stack('css')
         
         
