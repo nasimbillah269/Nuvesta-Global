@@ -118,6 +118,12 @@
   content:"";position:absolute;inset:0;
   background:linear-gradient(90deg,#182a4f 0%,rgba(24,42,79,.75) 12%,rgba(24,42,79,0) 38%);
 }
+.nv .hero-img-slider::before{z-index:1}
+.nv .hero-slide{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:0;transition:opacity 1.2s ease-in-out;
+}
+.nv .hero-slide.active{opacity:1}
 .nv .hero .container{position:relative;z-index:2}
 .nv .hero-content{max-width:640px;padding:64px 0 40px}
 .nv .hero .eyebrow{color:var(--nv-sky);font-size:13px;letter-spacing:.14em;margin-bottom:16px}

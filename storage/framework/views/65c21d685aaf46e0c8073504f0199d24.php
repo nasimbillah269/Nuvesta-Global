@@ -40,7 +40,7 @@
             <a href="<?php echo e($menuUrl($btn)); ?>" <?php echo $target($btn); ?> class="nv-btn <?php echo e($loop->first ? 'nv-btn-navy' : 'nv-btn-outline'); ?> d-none d-sm-inline-flex"><?php echo e($btn->menuName()); ?></a>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <?php else: ?>
-          <a href="<?php echo e($quoteUrl); ?>" class="nv-btn nv-btn-navy d-none d-sm-inline-flex">Request an RFQ</a>
+          <a href="<?php echo e($quoteUrl); ?>" class="nv-btn nv-btn-navy d-none d-sm-inline-flex">Enquiry</a>
         <?php endif; ?>
         <button type="button" class="header-search" data-nv-search-open aria-label="Search" aria-haspopup="dialog" aria-controls="nvSearch"><i class="bi bi-search"></i></button>
         <button class="navbar-toggler nv-burger" type="button" data-nv-drawer-open aria-controls="nvDrawer" aria-expanded="false" aria-label="Open menu">
