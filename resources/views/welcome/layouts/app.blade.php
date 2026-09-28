@@ -61,7 +61,7 @@
     text-align: justify;
 }
         .nv .section-title {
-    font-size: 20px;
+    font-size: 20px !important;
 }
         
         .appointment-left h2 {

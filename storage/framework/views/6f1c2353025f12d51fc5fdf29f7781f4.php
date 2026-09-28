@@ -60,12 +60,14 @@
 
     text-align: justify;
 }
-        
+        .nv .section-title {
+    font-size: 20px !important;
+}
         
         .appointment-left h2 {
             color: #fff;
         }
-        .appointment-left span 
+        .appointment-left span {
     color: #fff;
 }
         
