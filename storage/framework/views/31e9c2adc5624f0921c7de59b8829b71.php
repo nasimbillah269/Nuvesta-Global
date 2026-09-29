@@ -16,11 +16,11 @@
          ========================================================================== -->
     <section class="services-cover">
         <div class="container">
-            <h1 class="services-cover-title">Our Services</h1>
+            <h1 class="services-cover-title">Our Sourcing &amp; Service</h1>
             <div class="services-cover-breadcrumb">
                 <a href="index.html">Home</a>
                 <span class="separator"><i class="fa-solid fa-chevron-right"></i></span>
-                <span class="current">Services</span>
+                <span class="current">Sourcing &amp; Service</span>
             </div>
         </div>
     </section>
@@ -36,8 +36,7 @@
     <section class="services-offer-section">
         <div class="container">
             <div class="text-center max-w-700 mx-auto" data-aos="fade-up">
-                <span class="services-section-badge">Capabilities</span>
-                <h2>What We Offer</h2>
+                <h2>We Offer</h2>
             </div>
 
             <div class="services-bento-grid">
@@ -283,8 +282,7 @@
     <section class="services-process-section">
         <div class="container">
             <div class="text-center" data-aos="fade-up">
-                <span class="services-section-badge">Step-By-Step</span>
-                <h2 class="services-process-title">Our Work Process</h2>
+                <h2 class="services-process-title">Our Service</h2>
             </div>
 
             <div class="services-process-grid">

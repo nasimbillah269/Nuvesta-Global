@@ -657,7 +657,8 @@ class WelcomeController extends Controller
           ->whereIn('src_id',(clone $base)->select('id'))
           ->selectRaw('reff_id, COUNT(DISTINCT src_id) as total')
           ->groupBy('reff_id')->pluck('total','reff_id');
-        $facets = Attribute::where('type',0)->where('status','active')
+        // only top-level categories as tabs (sub-categories share names like "Men's", "Kids")
+        $facets = Attribute::where('type',0)->where('status','active')->whereNull('parent_id')
           ->whereIn('id',$categoryCounts->keys())->orderBy('name')->get(['id','name','slug'])
           ->each(fn($c) => $c->total = $categoryCounts[$c->id]);
         $totalProducts = (clone $base)->count();
