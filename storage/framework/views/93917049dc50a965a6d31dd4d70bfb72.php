@@ -287,7 +287,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
                 <div class="col-lg-4 col-md-5" data-aos="fade-up">
                     <div class="about-director-card">
                         <div class="about-director-img-wrap">
-                            <img src="<?php echo e(asset('welcome/images/home/professional-male-avatar-profile-picture-employee-work_1322206-66523.webp')); ?>" alt="MD Ariful Islam">
+                            <img src="<?php echo e(asset('welcome/images/home/director-sayem-khan.jpg')); ?>" alt="Abu Shadath Sayem Khan" style="object-position: center top;">
                         </div>
                         <div class="about-director-meta">
                             <h3 class="about-director-name">Abu Shadath Sayem Khan</h3>
