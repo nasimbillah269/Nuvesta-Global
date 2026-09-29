@@ -663,22 +663,23 @@ class WelcomeController extends Controller
           ->each(fn($c) => $c->total = $categoryCounts[$c->id]);
         $totalProducts = (clone $base)->count();
 
-        // selected category (top-level or sub), its parent, and its sub-categories that have products
+        // selected category (any depth), its ancestor chain, children and siblings that have products
         $current = $r->category ? Attribute::where('type',0)->where('status','active')->where('slug',$r->category)->first() : null;
-        $parentCat = $current && $current->parent_id ? Attribute::where('type',0)->find($current->parent_id) : null;
-        $subcats = collect();
-        if($current){
-          $subcats = Attribute::where('type',0)->where('status','active')
-            ->where('parent_id',$parentCat ? $parentCat->id : $current->id)
-            ->whereIn('id',$categoryCounts->keys())->orderBy('name')->get(['id','name','slug'])
-            ->each(function($c) use($categoryCounts,$base){
-              $c->total = $categoryCounts[$c->id];
-              $c->cover = (clone $base)->whereHas('productCategories',fn($q) => $q->where('attributes.id',$c->id))
-                ->with('imageFile')->latest()->first();
-            });
+        $ancestors = collect();
+        for($a = $current; $a && $a->parent_id && $ancestors->count() < 10; ){
+          $a = Attribute::where('type',0)->find($a->parent_id);
+          if($a) $ancestors->prepend($a);
         }
-        // a top-level category with sub-categories lists its sub-categories instead of products
-        $showSubcats = $current && !$parentCat && $subcats->count();
+        $parentCat = $ancestors->last();
+        $childrenOf = fn($id) => Attribute::where('type',0)->where('status','active')->where('parent_id',$id)
+            ->whereIn('id',$categoryCounts->keys())->orderBy('name')->get(['id','name','slug'])
+            ->each(fn($c) => $c->total = $categoryCounts[$c->id]);
+        $subcats  = $current ? $childrenOf($current->id) : collect();
+        $siblings = $parentCat ? $childrenOf($parentCat->id) : collect();
+        $subcats->each(fn($c) => $c->cover = (clone $base)->whereHas('productCategories',fn($q) => $q->where('attributes.id',$c->id))
+            ->with('imageFile')->latest()->first());
+        // a category with sub-categories lists its sub-categories instead of products
+        $showSubcats = $subcats->count() > 0;
 
         $products = clone $base;
         if($r->category){
@@ -692,7 +693,7 @@ class WelcomeController extends Controller
         }
         $products = $products->with(['imageFile','bannerFile'])->paginate(12)->withQueryString();
 
-        return view(welcomeTheme().'products.latestProducts',compact('products','page','facets','totalProducts','current','parentCat','subcats','showSubcats'));
+        return view(welcomeTheme().'products.latestProducts',compact('products','page','facets','totalProducts','current','ancestors','parentCat','subcats','siblings','showSubcats'));
       }
 
       return view(welcomeTheme().'pages.pageView',compact('page'));

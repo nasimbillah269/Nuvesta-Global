@@ -19,7 +19,7 @@
       return $pageUrl.($q ? '?'.http_build_query($q) : '');
   };
   $activeName = $current ? $current->name : null;
-  $activeTop  = $parentCat ? $parentCat->slug : $activeCategory;   // chip to highlight
+  $activeTop  = $ancestors->count() ? $ancestors->first()->slug : $activeCategory;   // chip to highlight
 ?>
 
 <?php $__env->startPush('css'); ?>
@@ -56,7 +56,7 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
           <li><a href="<?php echo e(route('index')); ?>">Home</a></li>
           <?php if($current): ?>
             <li><a href="<?php echo e($pageUrl); ?>"><?php echo e($page->name); ?></a></li>
-            <?php if($parentCat): ?><li><a href="<?php echo e($url(['category' => $parentCat->slug, 'page' => null])); ?>"><?php echo e($parentCat->name); ?></a></li><?php endif; ?>
+            <?php $__currentLoopData = $ancestors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $anc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><li><a href="<?php echo e($url(['category' => $anc->slug, 'page' => null])); ?>"><?php echo e($anc->name); ?></a></li><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <li aria-current="page"><?php echo e($current->name); ?></li>
           <?php else: ?>
             <li aria-current="page"><?php echo e($page->name); ?></li>
@@ -97,11 +97,11 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
         <?php endif; ?>
       </div>
 
-      <?php if($parentCat && $subcats->count() > 1): ?>
+      <?php if($parentCat && $siblings->count() > 1): ?>
         <!-- sibling sub-categories -->
         <div class="sp-subnav" role="group" aria-label="<?php echo e($parentCat->name); ?> categories">
           <span class="sp-subnav-label"><?php echo e($parentCat->name); ?>:</span>
-          <?php $__currentLoopData = $subcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <?php $__currentLoopData = $siblings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <a href="<?php echo e($url(['category' => $sc->slug, 'page' => null])); ?>" class="sp-subchip <?php echo e($activeCategory==$sc->slug ? 'is-active' : ''); ?>"><?php echo e($sc->name); ?> <span><?php echo e($sc->total); ?></span></a>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>

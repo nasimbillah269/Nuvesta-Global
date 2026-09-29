@@ -107,6 +107,10 @@
     position: relative;
 }
 
+.mgmt-thumbnails-wrap {
+    display: none !important;
+}
+
 .nav-submenu {
     display: none;
     position: absolute;

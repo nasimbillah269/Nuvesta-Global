@@ -19,7 +19,7 @@
       return $pageUrl.($q ? '?'.http_build_query($q) : '');
   };
   $activeName = $current ? $current->name : null;
-  $activeTop  = $parentCat ? $parentCat->slug : $activeCategory;   // chip to highlight
+  $activeTop  = $ancestors->count() ? $ancestors->first()->slug : $activeCategory;   // chip to highlight
 @endphp
 
 @push('css')
@@ -56,7 +56,7 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
           <li><a href="{{route('index')}}">Home</a></li>
           @if($current)
             <li><a href="{{$pageUrl}}">{{$page->name}}</a></li>
-            @if($parentCat)<li><a href="{{$url(['category' => $parentCat->slug, 'page' => null])}}">{{$parentCat->name}}</a></li>@endif
+            @foreach($ancestors as $anc)<li><a href="{{$url(['category' => $anc->slug, 'page' => null])}}">{{$anc->name}}</a></li>@endforeach
             <li aria-current="page">{{$current->name}}</li>
           @else
             <li aria-current="page">{{$page->name}}</li>
@@ -97,11 +97,11 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
         @endunless
       </div>
 
-      @if($parentCat && $subcats->count() > 1)
+      @if($parentCat && $siblings->count() > 1)
         <!-- sibling sub-categories -->
         <div class="sp-subnav" role="group" aria-label="{{$parentCat->name}} categories">
           <span class="sp-subnav-label">{{$parentCat->name}}:</span>
-          @foreach($subcats as $sc)
+          @foreach($siblings as $sc)
             <a href="{{$url(['category' => $sc->slug, 'page' => null])}}" class="sp-subchip {{$activeCategory==$sc->slug ? 'is-active' : ''}}">{{$sc->name}} <span>{{$sc->total}}</span></a>
           @endforeach
         </div>
