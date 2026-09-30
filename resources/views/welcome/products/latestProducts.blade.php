@@ -170,3 +170,49 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
 
 </div>
 @endsection
+
+@push('js')
+<script>
+  // category chips: horizontal scroll on small screens (swipe, mouse drag, edge fades, active chip in view)
+  (function () {
+    var row = document.querySelector('.nv .sp-filters');
+    if (!row) return;
+
+    function updateFades() {
+      var max = row.scrollWidth - row.clientWidth;
+      row.classList.toggle('fade-start', row.scrollLeft > 4);
+      row.classList.toggle('fade-end', max > 4 && row.scrollLeft < max - 4);
+    }
+
+    // bring the selected category into view
+    var active = row.querySelector('.sp-chip.is-active');
+    if (active && row.scrollWidth > row.clientWidth) {
+      row.scrollLeft = Math.max(0, active.offsetLeft - row.offsetLeft - 20);
+    }
+
+    // click-and-drag with a mouse (touch devices already swipe natively)
+    var down = false, moved = false, startX = 0, startLeft = 0;
+    row.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || row.scrollWidth <= row.clientWidth) return;
+      down = true; moved = false; startX = e.clientX; startLeft = row.scrollLeft;
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!down) return;
+      var dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 5) { moved = true; row.classList.add('is-dragging'); }
+      if (moved) row.scrollLeft = startLeft - dx;
+    });
+    window.addEventListener('pointerup', function () {
+      if (!down) return;
+      down = false;
+      setTimeout(function () { row.classList.remove('is-dragging'); }, 0);
+    });
+    // a drag must not open the chip link underneath
+    row.addEventListener('click', function (e) { if (moved) { e.preventDefault(); moved = false; } }, true);
+
+    row.addEventListener('scroll', updateFades, { passive: true });
+    window.addEventListener('resize', updateFades);
+    updateFades();
+  })();
+</script>
+@endpush

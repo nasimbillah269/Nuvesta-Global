@@ -9,144 +9,39 @@
 <link rel="canonical" href="{{route('index')}}" />
 
 <style>
-    .whoMain {
-    padding: 90px 0;
-    background: #f8f9fb;
-    overflow: hidden;
+/* ---------- WHO WE ARE ---------- */
+.nv .who{padding:80px 0;background:linear-gradient(180deg,#f7f8fb 0%,#fff 100%);overflow:hidden}
+.nv .who-text{padding-right:24px}
+.nv .who h2{font-size:40px;line-height:1.15;font-weight:700;color:var(--nv-navy);letter-spacing:-.015em !important;margin-bottom:24px;padding-bottom:18px;position:relative}
+.nv .who h2::after{content:"";position:absolute;left:0;bottom:0;width:60px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--nv-accent),var(--nv-sky))}
+.nv .who-lead{font-size:16px !important;line-height:1.8 !important;color:var(--nv-text) !important;margin-bottom:24px !important;text-align:justify !important}
+.nv .who-tagline{font-size:15px !important;line-height:1.6 !important;font-weight:600;color:var(--nv-navy) !important;text-align:justify !important;
+  background:#fff;border:1px solid var(--nv-line);border-left:4px solid var(--nv-accent);border-radius:10px;padding:16px 20px;box-shadow:0 6px 18px rgba(30,49,91,.06)}
+
+.nv .who-media{position:relative;padding:0 0 28px 28px}
+.nv .who-media::before{content:"";position:absolute;left:0;bottom:0;width:62%;height:70%;border-radius:18px;
+  background:linear-gradient(135deg,var(--nv-navy) 0%,var(--nv-navy-3) 100%);z-index:0}
+.nv .who-photo{position:relative;z-index:1;border-radius:18px;overflow:hidden;box-shadow:0 24px 50px rgba(18,31,59,.18);aspect-ratio:4/3}
+.nv .who-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+.nv .who-media:hover .who-photo img{transform:scale(1.04)}
+.nv .who-badge{position:absolute;z-index:2;left:0;bottom:48px;padding:14px 18px;background:#fff;border-radius:14px;box-shadow:0 14px 30px rgba(18,31,59,.16);display:flex;align-items:center;gap:12px}
+.nv .who-badge b{font-size:30px;line-height:1;font-weight:700;color:var(--nv-accent)}
+.nv .who-badge span{font-size:12px !important;line-height:1.35;color:var(--nv-navy) !important;font-weight:600}
+
+@media (max-width:1199.98px){
+  .nv .who h2{font-size:34px}
 }
-
-.whoMain .container {
-    position: relative;
+@media (max-width:991.98px){
+  .nv .who{padding:56px 0}
+  .nv .who-text{padding-right:0;margin-bottom:10px}
 }
-
-.whoMain .row {
-    align-items: center;
+@media (max-width:575.98px){
+  .nv .who{padding:44px 0}
+  .nv .who h2{font-size:30px}
+  .nv .who-media{padding:0 0 20px 16px}
+  .nv .who-badge{bottom:34px;padding:10px 14px}
+  .nv .who-badge b{font-size:24px}
 }
-
-/* Left Content */
-.whoLeft {
-    padding: 45px;
-    background: #ffffff;
-    border-radius: 20px;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
-}
-
-.whoLeft h4 {
-    margin: 0 0 20px;
-    font-size: 38px;
-    line-height: 1.2;
-    font-weight: 700;
-    color: #172033;
-    position: relative;
-    padding-bottom: 15px;
-}
-
-.whoLeft h4::after {
-    content: "";
-    width: 55px;
-    height: 4px;
-    background: #e6a23c;
-    border-radius: 10px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-
-.whoLeft p {
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.9;
-    color: #667085;
-}
-
-/* Right Side */
-.whoRight {
-    min-height: 350px;
-    margin-left: -40px;
-    border-radius: 20px;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(23, 32, 51, 0.95),
-            rgba(23, 32, 51, 0.75)
-        ),
-        url("../images/home/brand-hm.png") center/cover no-repeat;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Decorative Circle */
-.whoRight::before {
-    content: "";
-    position: absolute;
-    width: 220px;
-    height: 220px;
-    border: 35px solid rgba(230, 162, 60, 0.15);
-    border-radius: 50%;
-    top: -80px;
-    right: -70px;
-}
-
-/* Decorative Circle */
-.whoRight::after {
-    content: "";
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    background: rgba(230, 162, 60, 0.12);
-    border-radius: 50%;
-    bottom: -40px;
-    left: -30px;
-}
-
-/* Responsive */
-@media (max-width: 991px) {
-    .whoMain {
-        padding: 60px 0;
-    }
-
-    .whoLeft {
-        padding: 35px;
-    }
-
-    .whoLeft h4 {
-        font-size: 32px;
-    }
-
-    .whoRight {
-        margin-left: 0;
-        margin-top: 30px;
-        min-height: 280px;
-    }
-}
-
-@media (max-width: 575px) {
-    .whoMain {
-        padding: 45px 0;
-    }
-
-    .whoLeft {
-        padding: 25px;
-        border-radius: 15px;
-    }
-
-    .whoLeft h4 {
-        font-size: 28px;
-    }
-
-    .whoLeft p {
-        font-size: 15px;
-        line-height: 1.75;
-    }
-
-    .whoRight {
-        min-height: 220px;
-        border-radius: 15px;
-    }
-}
-
 </style>
 
 
@@ -158,47 +53,39 @@
 @include(general()->theme.'.layouts.slider')
 
 
-<div class="whoMain">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="whoLeft">
-                    <h4>
-                       Who We Are
-                    </h4>
-                    <p>
-
-Nuvesta Global is a Lithuania-registered apparel sourcing and supply company connecting buyers across Europe, the UK and the USA with trusted manufacturing and sourcing partners in Bangladesh and selected Asian markets.
-
-We coordinate product development, fabric and trim sourcing, costing, sampling, supplier selection, production follow-up, quality assurance and shipment—giving international buyers a structured sourcing partner from inquiry to delivery.
-
-<br>
-<br>
-<b>
-    European presence. Bangladesh manufacturing access. International sourcing support.
-</b>
-                    </p>
-                </div>                
-            </div>
-            <div class="col-md-6">
-                <div class="whoRight">
-                    <img src="{{asset('welcome/images/home/WhatsApp Image 2026-09-27 at 3.00.36 PM.jpeg')}}" alt="H&amp;M">
-                </div>
-            </div>
+<!-- ================= WHO WE ARE ================= -->
+<section class="who">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="who-text">
+          <h2>Who We Are</h2>
+          <p class="who-lead">Nuvesta Global is a Lithuania-registered apparel sourcing and supply company connecting buyers across Europe, the UK and the USA with trusted manufacturing and sourcing partners in Bangladesh and selected Asian markets. We coordinate product development, fabric and trim sourcing, costing, sampling, supplier selection, production follow-up, quality assurance and shipment—giving international buyers a structured sourcing partner from inquiry to delivery.</p>
+          <p class="who-tagline">European presence. Bangladesh manufacturing access. International sourcing support.</p>
         </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="who-media">
+          <div class="who-photo"><img src="{{asset('welcome/images/home/WhatsApp Image 2026-09-27 at 3.00.36 PM.jpeg')}}" alt="Nuvesta Global showroom and meeting room" loading="lazy"></div>
+          <div class="who-badge"><b>26+</b><span>Years of Apparel<br>Industry Experience</span></div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
 
 <!-- ================= FEATURE STRIP ================= -->
 <section class="feature-strip">
   <div class="container">
-    <div class="row g-0 row-cols-2 row-cols-md-3 row-cols-lg-6">
-      <div class="col feature-item" data-aos="fade-up" data-aos-delay="0"><i class="bi bi-shield-check"></i><p>Reliable<br>Factory Network</p></div>
-      <div class="col feature-item" data-aos="fade-up" data-aos-delay="80"><i class="bi bi-clipboard2-data"></i><p>Quality<br>Focused</p></div>
-      <div class="col feature-item" data-aos="fade-up" data-aos-delay="160"><i class="bi bi-gear"></i><p>Product<br>Expertise</p></div>
-      <div class="col feature-item" data-aos="fade-up" data-aos-delay="240"><i class="bi bi-clock-history"></i><p>On-Time<br>Delivery</p></div>
-      <div class="col feature-item" data-aos="fade-up" data-aos-delay="320"><i class="fa-regular fa-handshake"></i><p>Transparent<br>Communication</p></div>
-      <div class="col feature-item" data-aos="fade-up" data-aos-delay="400"><i class="fa-solid fa-leaf"></i><p>Sustainable<br>Future</p></div>
+    <div class="feature-panel">
+      <div class="row g-0 row-cols-2 row-cols-md-3 row-cols-lg-6">
+        <div class="col feature-item" data-aos="fade-up" data-aos-delay="0"><span class="feature-icon"><i class="bi bi-shield-check"></i></span><h3 class="feature-title">Reliable Factory Network</h3><p>Vetted &amp; compliant partners</p></div>
+        <div class="col feature-item" data-aos="fade-up" data-aos-delay="80"><span class="feature-icon"><i class="bi bi-clipboard2-data"></i></span><h3 class="feature-title">Quality Focused</h3><p>Inline &amp; final inspections</p></div>
+        <div class="col feature-item" data-aos="fade-up" data-aos-delay="160"><span class="feature-icon"><i class="bi bi-gear"></i></span><h3 class="feature-title">Product Expertise</h3><p>From development to costing</p></div>
+        <div class="col feature-item" data-aos="fade-up" data-aos-delay="240"><span class="feature-icon"><i class="bi bi-clock-history"></i></span><h3 class="feature-title">On-Time Delivery</h3><p>Planned &amp; tracked timelines</p></div>
+        <div class="col feature-item" data-aos="fade-up" data-aos-delay="320"><span class="feature-icon"><i class="fa-regular fa-handshake"></i></span><h3 class="feature-title">Transparent Communication</h3><p>One clear point of contact</p></div>
+        <div class="col feature-item" data-aos="fade-up" data-aos-delay="400"><span class="feature-icon"><i class="fa-solid fa-leaf"></i></span><h3 class="feature-title">Sustainable Future</h3><p>Responsible sourcing choices</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -211,16 +98,16 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
         <p class="eyebrow">Our Sourcing Services</p>
         <h2 class="section-title">From Product Idea to Shipment</h2>
         <p class="section-text">Nuvesta Global LLC provides end-to-end apparel sourcing and product development support for brands, retailers, importers and buying organizations.</p>
-        <a href="#" class="nv-btn nv-btn-outline">Learn More About Our Services <i class="bi bi-arrow-right"></i></a>
+        <a href="{{($servicePage = pageTemplate('Sourcing & Services') ?: pageTemplate('Service')) ? route('pageView',$servicePage->slug) : '#'}}" class="nv-btn nv-btn-outline">Learn More About Our Services <i class="bi bi-arrow-right"></i></a>
       </div>
       <div class="col-lg-8 col-xl-9">
-        <div class="row g-0 row-cols-2 row-cols-md-3 row-cols-xl-6 steps">
-          <div class="col step" data-aos="fade-up" data-aos-delay="0"><span class="step-num">01</span><i class="bi bi-lightbulb"></i><h6>Product<br>Development</h6><p>Tech packs, sampling and commercial development.</p></div>
-          <div class="col step" data-aos="fade-up" data-aos-delay="90"><span class="step-num">02</span><i class="bi bi-layers"></i><h6>Fabric &amp; Trim<br>Sourcing</h6><p>Finding the right materials, mills and suppliers.</p></div>
-          <div class="col step" data-aos="fade-up" data-aos-delay="180"><span class="step-num">03</span><i class="bi bi-buildings"></i><h6>Factory<br>Matching</h6><p>Partners based on quality, capacity and requirements.</p></div>
-          <div class="col step" data-aos="fade-up" data-aos-delay="270"><span class="step-num">04</span><i class="bi bi-calculator"></i><h6>Costing &amp;<br>Negotiation</h6><p>Detailed FOB costing and commercial negotiation.</p></div>
-          <div class="col step" data-aos="fade-up" data-aos-delay="360"><span class="step-num">05</span><i class="bi bi-scissors"></i><h6>Production<br>Management</h6><p>T&amp;A follow-up, monitoring and buyer communication.</p></div>
-          <div class="col step" data-aos="fade-up" data-aos-delay="450"><span class="step-num">06</span><i class="bi bi-shield-check"></i><h6>Quality &amp;<br>Shipment</h6><p>Inspection, packing and shipment readiness.</p></div>
+        <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-xl-6 steps">
+          <div class="col" data-aos="fade-up" data-aos-delay="0"><div class="step"><div class="step-top"><span class="step-icon"><i class="bi bi-lightbulb"></i></span><span class="step-num">01</span></div><h6>Product Development</h6><p>Tech packs, sampling and commercial development.</p></div></div>
+          <div class="col" data-aos="fade-up" data-aos-delay="90"><div class="step"><div class="step-top"><span class="step-icon"><i class="bi bi-layers"></i></span><span class="step-num">02</span></div><h6>Fabric &amp; Trim Sourcing</h6><p>Finding the right materials, mills and suppliers.</p></div></div>
+          <div class="col" data-aos="fade-up" data-aos-delay="180"><div class="step"><div class="step-top"><span class="step-icon"><i class="bi bi-buildings"></i></span><span class="step-num">03</span></div><h6>Factory Matching</h6><p>Partners based on quality, capacity and requirements.</p></div></div>
+          <div class="col" data-aos="fade-up" data-aos-delay="270"><div class="step"><div class="step-top"><span class="step-icon"><i class="bi bi-calculator"></i></span><span class="step-num">04</span></div><h6>Costing &amp; Negotiation</h6><p>Detailed FOB costing and commercial negotiation.</p></div></div>
+          <div class="col" data-aos="fade-up" data-aos-delay="360"><div class="step"><div class="step-top"><span class="step-icon"><i class="bi bi-scissors"></i></span><span class="step-num">05</span></div><h6>Production Management</h6><p>T&amp;A follow-up, monitoring and buyer communication.</p></div></div>
+          <div class="col" data-aos="fade-up" data-aos-delay="450"><div class="step"><div class="step-top"><span class="step-icon"><i class="bi bi-shield-check"></i></span><span class="step-num">06</span></div><h6>Quality &amp; Shipment</h6><p>Inspection, packing and shipment readiness.</p></div></div>
         </div>
       </div>
     </div>
@@ -228,6 +115,31 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
 </section>
 
 <!-- ================= PRODUCTS ================= -->
+@php
+  // one card list for the slider: real categories, or a static fallback when none exist yet
+  if(isset($homeCategories) && $homeCategories->count()){
+    $productCards = $homeCategories->map(function($ctg){
+      $fallback = collect(['outerwear','knitwear','shirts','denim','activewear','pants'])
+          ->first(fn($k) => str_contains(Str::lower($ctg->slug.' '.$ctg->name), rtrim($k,'s')) || str_contains(Str::lower($ctg->name), Str::substr($k,0,4)));
+      return [
+        'url'   => route('productCategory',$ctg->slug?:'no-title'),
+        'img'   => $ctg->cardImage ?: ($fallback ? 'welcome/images/home/p-'.$fallback.'.jpg' : 'medies/noimage.jpg'),
+        'name'  => $ctg->name,
+        'count' => $ctg->productsTotal ? $ctg->productsTotal.' '.Str::plural('Product',$ctg->productsTotal) : 'Explore range',
+        'subs'  => $ctg->subNames->implode(' · '),
+      ];
+    });
+  }else{
+    $productCards = collect([
+      ['pants','Pants & Shorts','Chinos · Cargo · Casual · Denim'],
+      ['outerwear','Outerwear','Jackets · Puffer · Technical · Workwear'],
+      ['shirts','Shirts','Woven · Flannel · Oxford · Poplin'],
+      ['knitwear','Knitwear','T-Shirts · Polo · Sweatshirts · Hoodies'],
+      ['activewear','Activewear','Sportswear · Performance · Underwear'],
+      ['denim','Denim','Jeans · Shorts · Jackets · Washed'],
+    ])->map(fn($p) => ['url' => '#', 'img' => 'welcome/images/home/p-'.$p[0].'.jpg', 'name' => $p[1], 'count' => 'Explore range', 'subs' => $p[2]]);
+  }
+@endphp
 <section class="products">
   <div class="container">
     <div class="row g-4 align-items-center">
@@ -236,57 +148,29 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
         <h2 class="section-title">Our Product Expertise</h2>
         <p class="section-text">Wide range of apparel categories with a focus on quality, trends and commercial value.</p>
         <a href="{{($productsPage = pageTemplate('Latest Products')) ? route('pageView',$productsPage->slug) : url('products-all')}}" class="nv-btn nv-btn-outline">View All Product Categories <i class="bi bi-arrow-right"></i></a>
+        @if($productCards->count() > 5)
+        <div class="ctg-nav">
+          <button type="button" class="ctg-arrow ctg-prev" aria-label="Previous categories"><i class="bi bi-arrow-left"></i></button>
+          <button type="button" class="ctg-arrow ctg-next" aria-label="Next categories"><i class="bi bi-arrow-right"></i></button>
+        </div>
+        @endif
       </div>
-      <div class="col-lg-9">
-        @php
-          $ctgCount = isset($homeCategories) ? $homeCategories->count() : 0;
-          $xlCols   = max(3, min(6, $ctgCount));
-        @endphp
-        @if($ctgCount)
-        <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-xl-{{$xlCols}} {{$ctgCount < 6 ? 'ctg-few' : ''}}">
-          @foreach($homeCategories as $ctg)
-          <div class="col" data-aos="fade-up" data-aos-delay="{{$loop->index*80}}">
-            <a href="{{route('productCategory',$ctg->slug?:'no-title')}}" class="product-card">
-              @php
-                // no category/product image -> use a matching home photo if we have one
-                $fallback = collect(['outerwear','knitwear','shirts','denim','activewear','pants'])
-                    ->first(fn($k) => str_contains(Str::lower($ctg->slug.' '.$ctg->name), rtrim($k,'s')) || str_contains(Str::lower($ctg->name), Str::substr($k,0,4)));
-                $imgSrc = $ctg->cardImage ?: ($fallback ? 'welcome/images/home/p-'.$fallback.'.jpg' : 'medies/noimage.jpg');
-              @endphp
-              <div class="ph"><img src="{{asset($imgSrc)}}" alt="{{$ctg->name}}" loading="lazy"></div>
-              <div class="product-info">
-                <h6>{{$ctg->name}}</h6>
-                <p>
-                  @if($ctg->subNames->count())
-                    {{$ctg->subNames->implode(' | ')}}
-                  @else
-                    {{$ctg->productsTotal ? $ctg->productsTotal.' '.Str::plural('product',$ctg->productsTotal) : 'Explore range'}}
-                  @endif
-                </p>
+      <div class="col-lg-9" data-aos="fade-up">
+        <div class="ctg-slider">
+          @foreach($productCards as $card)
+          <div class="ctg-slide">
+            <a href="{{$card['url']}}" class="ctg-card">
+              <div class="ctg-img"><img src="{{asset($card['img'])}}" alt="{{$card['name']}}" loading="lazy"></div>
+              <div class="ctg-body">
+                <span class="ctg-count">{{$card['count']}}</span>
+                <h6 class="ctg-name">{{$card['name']}}</h6>
+                <p class="ctg-subs">{{$card['subs'] ?: 'View collection'}}</p>
+                <span class="ctg-go"><i class="bi bi-arrow-up-right"></i></span>
               </div>
             </a>
           </div>
           @endforeach
         </div>
-        @else
-        <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-xl-6">
-          @foreach([
-            ['pants','Pants &amp; Shorts','Chinos | Cargo | Casual | Denim'],
-            ['outerwear','Outerwear','Jackets | Puffer | Technical | Workwear'],
-            ['shirts','Shirts','Woven | Flannel | Oxford | Poplin'],
-            ['knitwear','Knitwear','T-Shirts | Polo | Sweatshirts | Hoodies'],
-            ['activewear','Activewear','Sportswear | Performance | Underwear'],
-            ['denim','Denim','Jeans | Shorts | Jackets | Washed'],
-          ] as $p)
-          <div class="col" data-aos="fade-up" data-aos-delay="{{$loop->index*80}}">
-            <a href="#" class="product-card">
-              <div class="ph"><img src="{{asset('welcome/images/home/p-'.$p[0].'.jpg')}}" alt="{{strip_tags(html_entity_decode($p[1]))}}" loading="lazy"></div>
-              <div class="product-info"><h6>{!!$p[1]!!}</h6><p>{{$p[2]}}</p></div>
-            </a>
-          </div>
-          @endforeach
-        </div>
-        @endif
       </div>
     </div>
   </div>
@@ -349,11 +233,11 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
       </div>
       <div class="col-lg-8">
         <div data-aos="fade-up" class="why-box row g-0 row-cols-2 row-cols-md-3 row-cols-xl-5">
-          <div class="col why-item" data-aos="zoom-in" data-aos-delay="0"><i class="bi bi-calendar2-check"></i><h6>26+ Years<br>Industry Experience</h6><p>Merchandising, costing, development, production and more.</p></div>
-          <div class="col why-item" data-aos="zoom-in" data-aos-delay="90"><i class="bi bi-lightbulb"></i><h6>Deep Product<br>Knowledge</h6><p>Across woven, knit, denim and performance categories.</p></div>
-          <div class="col why-item" data-aos="zoom-in" data-aos-delay="180"><i class="bi bi-building"></i><h6>Strategic<br>Factory Network</h6><p>Trusted and capable manufacturing partners in Bangladesh.</p></div>
-          <div class="col why-item" data-aos="zoom-in" data-aos-delay="270"><i class="bi bi-tag"></i><h6>Commercial<br>Understanding</h6><p>From fabric to FOB — we make it work.</p></div>
-          <div class="col why-item" data-aos="zoom-in" data-aos-delay="360"><i class="bi bi-people"></i><h6>One Partner<br>End-to-End</h6><p>Single point of contact from inquiry to shipment.</p></div>
+          <div class="col why-item" data-aos="zoom-in" data-aos-delay="0"><span class="why-icon"><i class="bi bi-calendar2-check"></i></span><h6>26+ Years<br>Industry Experience</h6><p>Merchandising, costing, development, production and more.</p></div>
+          <div class="col why-item" data-aos="zoom-in" data-aos-delay="90"><span class="why-icon"><i class="bi bi-lightbulb"></i></span><h6>Deep Product<br>Knowledge</h6><p>Across woven, knit, denim and performance categories.</p></div>
+          <div class="col why-item" data-aos="zoom-in" data-aos-delay="180"><span class="why-icon"><i class="bi bi-building"></i></span><h6>Strategic<br>Factory Network</h6><p>Trusted and capable manufacturing partners in Bangladesh.</p></div>
+          <div class="col why-item" data-aos="zoom-in" data-aos-delay="270"><span class="why-icon"><i class="bi bi-tag"></i></span><h6>Commercial<br>Understanding</h6><p>From fabric to FOB — we make it work.</p></div>
+          <div class="col why-item" data-aos="zoom-in" data-aos-delay="360"><span class="why-icon"><i class="bi bi-people"></i></span><h6>One Partner<br>End-to-End</h6><p>Single point of contact from inquiry to shipment.</p></div>
         </div>
       </div>
     </div>
@@ -411,3 +295,34 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
 
 </div>
 @endsection
+
+@push('js')
+<script>
+  // product categories slider – 5 cards visible, slides smoothly when there are more
+  $(function () {
+    var $slider = $('.nv .ctg-slider');
+    if (!$slider.length || typeof $.fn.slick !== 'function') return;
+    var many = $slider.children().length > 5;
+    $slider.slick({
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      infinite: many,
+      autoplay: many,
+      autoplaySpeed: 2800,
+      speed: 700,
+      cssEase: 'cubic-bezier(.45,.05,.25,1)',
+      pauseOnHover: true,
+      swipeToSlide: true,
+      arrows: many,
+      prevArrow: $('.nv .ctg-prev'),
+      nextArrow: $('.nv .ctg-next'),
+      dots: false,
+      responsive: [
+        { breakpoint: 1200, settings: { slidesToShow: 4, arrows: true, infinite: true, autoplay: true } },
+        { breakpoint: 992,  settings: { slidesToShow: 3, arrows: true, infinite: true, autoplay: true } },
+        { breakpoint: 768,  settings: { slidesToShow: 2, arrows: true, infinite: true, autoplay: true } }
+      ]
+    });
+  });
+</script>
+@endpush

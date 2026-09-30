@@ -192,6 +192,7 @@
                                         <option value="Quality & Compliance" {{$page->template=='Quality & Compliance'?'selected':''}}>Quality & Compliance</option>
                                         <option value="Get A Quote" {{$page->template=='Get A Quote'?'selected':''}}>Get A Quote</option>
                                         <option value="Service" {{$page->template=='Service'?'selected':''}}>Service</option>
+                                        <option value="Sourcing & Services" {{$page->template=='Sourcing & Services'?'selected':''}}>Sourcing & Services</option>
                                         <option value="Contact Us" {{$page->template=='Contact Us'?'selected':''}}>Contact Us</option>
                                         <option value="Product Request" {{$page->template=='Product Request'?'selected':''}}>Product Request</option>
                                         <option value="Offer Products" {{$page->template=='Offer Products'?'selected':''}}>Offer Products</option>

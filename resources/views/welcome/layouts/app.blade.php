@@ -110,6 +110,9 @@
 .mgmt-thumbnails-wrap {
     display: none !important;
 }
+.detail-short-desc {
+    display: none !important; 
+}
 
 .nav-submenu {
     display: none;
@@ -221,8 +224,12 @@
         position: relative;
     }
         
-        
-        
+        .nv .partners {
+    display: none;
+}
+        .nv .about-band {
+    margin-bottom: 50px;
+}
         
         
         
@@ -272,7 +279,9 @@
     transform: scaleY(0);
     transition: transform 0.4s ease-in-out;
 }
-
+.contact-cover-section {
+    padding: 10px 0;
+}
 .service-block span::before {
     left: 0;
     transform-origin: top;
@@ -700,6 +709,9 @@ footer .footer-content .footer-title h5:before{
 
 
 @media screen and (max-width: 767px) {
+    .nv .brand-logo {
+    height: 70px !important;
+}
       .floating-contact {
          position: fixed;
     right: 20px;
@@ -1256,8 +1268,10 @@ header .sub_header ul .onhover-div .shoping-prize, header .sub_header ul li .sho
     font-size: 26px !important;
 }
 
-.nv .brand-logo {
-    height: 110px !important;
+@media (min-width: 768px) {
+    .nv .brand-logo {
+        height: 110px !important;
+    }
 }
 
 

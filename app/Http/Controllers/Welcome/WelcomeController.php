@@ -176,7 +176,7 @@ class WelcomeController extends Controller
         ->where(fn($q) => $q->whereNull('parent_id')->orWhere('parent_id',0))
         ->with(['imageFile','subctgs' => fn($q) => $q->where('status','active')])
         ->orderByDesc('fetured')->orderBy('view')->orderBy('name')
-        ->limit(6)->get()
+        ->limit(20)->get()
         ->each(function($ctg){
             $ids = $ctg->subctgs->pluck('id')->push($ctg->id);
             $productIds = PostAttribute::where('type',0)->whereIn('reff_id',$ids)->pluck('src_id')->unique();
@@ -595,6 +595,11 @@ class WelcomeController extends Controller
         return view(welcomeTheme().'pages.service',compact('page'));
       }
       
+      //Sourcing & Services Page
+      if($page->template=='Sourcing & Services'){
+        return view(welcomeTheme().'pages.sourcingServices',compact('page'));
+      }
+
       //Quality & Compliance Page
       if($page->template=='Quality & Compliance'){
         return view(welcomeTheme().'pages.Quality&Compliance',compact('page'));

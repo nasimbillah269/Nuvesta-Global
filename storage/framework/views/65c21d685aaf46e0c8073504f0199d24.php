@@ -105,7 +105,7 @@
             <a href="<?php echo e($menuUrl($btn)); ?>" <?php echo $target($btn); ?> class="nv-btn <?php echo e($loop->first ? 'nv-btn-navy' : 'nv-btn-outline'); ?>"><?php echo e($btn->menuName()); ?> <i class="bi bi-arrow-right"></i></a>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <?php else: ?>
-          <a href="<?php echo e($quoteUrl); ?>" class="nv-btn nv-btn-navy">Request an RFQ <i class="bi bi-arrow-right"></i></a>
+          <a href="<?php echo e($quoteUrl); ?>" class="nv-btn nv-btn-navy">Enquiry <i class="bi bi-arrow-right"></i></a>
         <?php endif; ?>
       </div>
       <ul class="nv-drawer-contact">

@@ -111,7 +111,7 @@
             <a href="{{$menuUrl($btn)}}" {!!$target($btn)!!} class="nv-btn {{$loop->first ? 'nv-btn-navy' : 'nv-btn-outline'}}">{{$btn->menuName()}} <i class="bi bi-arrow-right"></i></a>
           @endforeach
         @else
-          <a href="{{$quoteUrl}}" class="nv-btn nv-btn-navy">Request an RFQ <i class="bi bi-arrow-right"></i></a>
+          <a href="{{$quoteUrl}}" class="nv-btn nv-btn-navy">Enquiry <i class="bi bi-arrow-right"></i></a>
         @endif
       </div>
       <ul class="nv-drawer-contact">
