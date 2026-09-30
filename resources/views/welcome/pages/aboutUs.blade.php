@@ -218,7 +218,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
         <div class="container">
             <div class="row g-5 align-items-stretch">
                 <!-- Left Portrait Card -->
-                <div class="col-lg-4 col-md-5" data-aos="fade-up">
+                <!-- <div class="col-lg-4 col-md-5" data-aos="fade-up">
                     <div class="about-director-card">
                         <div class="about-director-img-wrap">
                             <img src="{{asset('welcome/images/home/founder.jpg')}}" alt="MD Ariful Islam">
@@ -229,13 +229,13 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
                             <span class="about-director-tagline">Global Sourcing, Local Expertise</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Right Message details -->
-                <div class="col-lg-8 col-md-7 d-flex align-items-center" data-aos="fade-up" data-aos-delay="150">
+                <div class="col-lg-12 col-md-12 d-flex align-items-center" data-aos="fade-up" data-aos-delay="150">
                     <div class="about-director-message-box">
                         
-                        <h2 class="about-director-heading mb-2">Message from the Managing Director</h2>
+                        <h2 class="about-director-heading mb-2">Message from  Managing Director</h2>
                         <h5 class="about-director-subheading">Reliable Sourcing. Real Partnership.</h5>
 
                         <div class="about-director-quote">
@@ -276,10 +276,10 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
                 
 
                 <!-- Right Message details -->
-                <div class="col-lg-8 col-md-7 d-flex align-items-center" data-aos="fade-up" data-aos-delay="150">
+                <div class="col-lg-12 col-md-12 d-flex align-items-center" data-aos="fade-up" data-aos-delay="150">
                     <div class="about-director-message-box">
                         
-                        <h2 class="about-director-heading mb-2">A Message from the Director</h2>
+                        <h2 class="about-director-heading mb-2">Message from  Director</h2>
                         <h5 class="about-director-subheading">Building trust through knowledge, sourcing and execution.</h5>
 
                         <div class="about-director-quote">
@@ -315,7 +315,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
                 
                 
                 <!-- Left Portrait Card -->
-                <div class="col-lg-4 col-md-5" data-aos="fade-up">
+                <!-- <div class="col-lg-4 col-md-5" data-aos="fade-up">
                     <div class="about-director-card">
                         <div class="about-director-img-wrap">
                             <img src="{{asset('welcome/images/home/director-sayem-khan.jpg')}}" alt="Abu Shadath Sayem Khan" style="object-position: center top;">
@@ -326,7 +326,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
                             <span class="about-director-tagline">Global Sourcing, Local Expertise</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
