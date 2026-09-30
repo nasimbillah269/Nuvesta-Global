@@ -843,6 +843,21 @@
     margin-bottom: 24px;
 }
 
+.about-director-subheading {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f2424b;
+    margin-bottom: 20px;
+}
+
+.about-director-quote p.about-director-motto {
+    font-weight: 500;
+    font-style: italic;
+    color: #0f2957;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
 .about-director-quote {
     font-size: 15px;
     color: #556987;
