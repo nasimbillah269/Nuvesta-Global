@@ -47,7 +47,7 @@
         <a href="{{route('index')}}" class="brand">
           <img src="{{asset($gs->footerLogo())}}" alt="{{$gs->title ?: 'Nuvesta Global LLC'}}" class="brand-logo">
         </a>
-        <p class="footer-tag">Global Apparel Sourcing &amp; Product Development</p>
+        <p class="footer-tag">Global Apparel Sourcing &amp; Product Development .</p>
         @if($socials->count())
         <div class="footer-social">
           @foreach($socials as [$url, $icon, $label])
