@@ -25,23 +25,7 @@
 @push('css')
 <style>
 .nv .sp-head h1{margin-bottom:22px}
-.nv .sp-subnav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:-6px 0 22px}
-.nv .sp-subnav-label{font-size:13px;color:var(--nv-muted);margin-right:4px}
-.nv .sp-subchip{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;border:1px solid var(--nv-line);background:#fff;color:var(--nv-text);font-size:13.5px;text-decoration:none;transition:border-color .2s,color .2s}
-.nv .sp-subchip:hover{border-color:var(--nv-accent);color:var(--nv-accent-2)}
-.nv .sp-subchip.is-active{border-color:var(--nv-accent);color:var(--nv-accent-2);font-weight:600}
-.nv .sp-subchip span{font-size:11px;color:var(--nv-muted)}
-a.sp-cat{display:flex;flex-direction:column;height:100%;background:#fff;border:1px solid #e4e4e7;border-radius:4px;overflow:hidden;text-decoration:none;color:var(--nv-navy);transition:border-color .3s,box-shadow .3s}
-a.sp-cat:hover{border-color:var(--nv-navy);box-shadow:0 10px 26px rgba(30,49,91,.10)}
-.sp-cat-media{position:relative;padding-top:100%;background:#f2f2f3;overflow:hidden}
-.sp-cat-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-a.sp-cat:hover .sp-cat-media img{transform:scale(1.04)}
-.sp-cat-body{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px}
-.sp-cat-name{font-size:17px;font-weight:600;margin:0;color:var(--nv-navy)}
-.sp-cat-count{display:block;font-size:13px;color:var(--nv-muted);margin-top:2px}
-.sp-cat-arrow{flex:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--nv-soft);color:var(--nv-navy);transition:background .2s,color .2s}
-a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
-@media (max-width:575.98px){.sp-cat-body{padding:12px}.sp-cat-name{font-size:15px}.sp-cat-arrow{width:30px;height:30px}}
+.nv .sp-subfilters{padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--nv-line)}
 </style>
 @endpush
 
@@ -78,13 +62,12 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
       <!-- ================= TOOLBAR ================= -->
       <div class="sp-toolbar">
         <div class="sp-filters" role="group" aria-label="Filter by category">
-          <a href="{{$url(['category' => null, 'page' => null])}}" class="sp-chip {{!$activeCategory ? 'is-active' : ''}}">All <span>{{$totalProducts}}</span></a>
+          <a href="{{$url(['category' => null, 'page' => null])}}" class="sp-chip {{!$activeCategory ? 'is-active' : ''}}">All</a>
           @foreach($facets as $facet)
-            <a href="{{$url(['category' => $facet->slug, 'page' => null])}}" class="sp-chip {{$activeTop==$facet->slug ? 'is-active' : ''}}">{{$facet->name}} <span>{{$facet->total}}</span></a>
+            <a href="{{$url(['category' => $facet->slug, 'page' => null])}}" class="sp-chip {{$activeTop==$facet->slug ? 'is-active' : ''}}">{{$facet->name}}</a>
           @endforeach
         </div>
 
-        @unless($showSubcats)
         <form class="sp-sort" action="{{$pageUrl}}" method="get">
           @if($activeCategory)<input type="hidden" name="category" value="{{$activeCategory}}">@endif
           <label for="spSort">Sort by</label>
@@ -94,42 +77,19 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
             @endforeach
           </select>
         </form>
-        @endunless
       </div>
 
-      @if($parentCat && $siblings->count() > 1)
-        <!-- sibling sub-categories -->
-        <div class="sp-subnav" role="group" aria-label="{{$parentCat->name}} categories">
-          <span class="sp-subnav-label">{{$parentCat->name}}:</span>
-          @foreach($siblings as $sc)
-            <a href="{{$url(['category' => $sc->slug, 'page' => null])}}" class="sp-subchip {{$activeCategory==$sc->slug ? 'is-active' : ''}}">{{$sc->name}} <span>{{$sc->total}}</span></a>
+      <!-- ================= SUB-CATEGORIES ================= -->
+      @foreach($subnavRows as $row)
+        <div class="sp-filters sp-subfilters" role="group" aria-label="{{$row->cat->name}} categories">
+          <a href="{{$url(['category' => $row->cat->slug, 'page' => null])}}" class="sp-chip {{$activeCategory==$row->cat->slug ? 'is-active' : ''}}">All {{$row->cat->name}}</a>
+          @foreach($row->items as $sc)
+            <a href="{{$url(['category' => $sc->slug, 'page' => null])}}" class="sp-chip {{$chain->contains('slug',$sc->slug) ? 'is-active' : ''}}">{{$sc->name}}</a>
           @endforeach
         </div>
-      @endif
+      @endforeach
 
-      @if($showSubcats)
-        <p class="sp-count">{{$subcats->count()}} {{Str::plural('category',$subcats->count())}} in {{$current->name}}</p>
-
-        <!-- ================= SUB-CATEGORIES ================= -->
-        <div class="row g-3 g-lg-4 row-cols-2 row-cols-md-3 row-cols-xl-4">
-          @foreach($subcats as $sc)
-            <div class="col" data-aos="fade-up" data-aos-delay="{{($loop->index % 4) * 70}}">
-              <a href="{{$url(['category' => $sc->slug, 'page' => null, 'sort' => null])}}" class="sp-cat">
-                <div class="sp-cat-media">
-                  @if($sc->cover)<img src="{{asset($sc->cover->image())}}" alt="{{$sc->name}}" loading="lazy">@endif
-                </div>
-                <div class="sp-cat-body">
-                  <div>
-                    <h3 class="sp-cat-name">{{$sc->name}}</h3>
-                    <span class="sp-cat-count">{{$sc->total}} {{Str::plural('product',$sc->total)}}</span>
-                  </div>
-                  <span class="sp-cat-arrow"><i class="bi bi-arrow-right"></i></span>
-                </div>
-              </a>
-            </div>
-          @endforeach
-        </div>
-      @elseif($products->total())
+      @if($products->total())
 
         <p class="sp-count">Showing {{$products->firstItem()}}–{{$products->lastItem()}} of {{$products->total()}} products</p>
 
@@ -174,9 +134,7 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
 @push('js')
 <script>
   // category chips: horizontal scroll on small screens (swipe, mouse drag, edge fades, active chip in view)
-  (function () {
-    var row = document.querySelector('.nv .sp-filters');
-    if (!row) return;
+  document.querySelectorAll('.nv .sp-filters').forEach(function (row) {
 
     function updateFades() {
       var max = row.scrollWidth - row.clientWidth;
@@ -213,6 +171,6 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
     row.addEventListener('scroll', updateFades, { passive: true });
     window.addEventListener('resize', updateFades);
     updateFades();
-  })();
+  });
 </script>
 @endpush

@@ -108,10 +108,10 @@
 }
 
 .mgmt-thumbnails-wrap {
-    display: none !important;
+    display: flex !important;
 }
 .detail-short-desc {
-    display: none !important; 
+    display: block !important;
 }
 
 .nav-submenu {

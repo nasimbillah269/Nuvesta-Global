@@ -28,15 +28,6 @@
     ['Activewear',  'Hiking, Joggers, Leggings',  'src-activewear.webp', 'activewear'],
   ];
 
-  $services = [
-    ['Product Development',          'svc-1.webp', ['Specification review', 'Garment construction', 'Sample development', 'Product costing']],
-    ['Fabric & Material Sourcing',   'svc-2.webp', ['Woven & knit fabrics', 'Functional fabrics', 'Trims & accessories', 'Material alternatives']],
-    ['Factory & Manufacturing',      'svc-3.webp', ['Factory matching', 'Production capacity', 'Compliance support', 'Lead time management']],
-    ['Production Management',        'svc-4.webp', ['Material follow-up', 'Cutting, sewing, finishing', 'Production monitoring', 'Delivery schedule']],
-    ['Quality Assurance',            'svc-5.webp', ['Material inspection', 'Inline quality control', 'Final inspection', 'Packing verification']],
-    ['Export & Logistics',           'svc-6.webp', ['Export documentation', 'Container loading', 'Sea / Air freight', 'Delivery to destination']],
-  ];
-
   $swatches = [
     ['sw-1.webp', 'Knit fabric'],
     ['sw-2.webp', 'Woven fabric'],
@@ -69,7 +60,7 @@
   background:linear-gradient(90deg,#0b2150 0%,#0d2552 38%,rgba(13,37,82,.85) 48%,rgba(13,37,82,.25) 66%,rgba(13,37,82,0) 80%)}
 .nvs-hero .container{position:relative;z-index:2}
 .nvs-hero-content{max-width:560px;padding:70px 0}
-.nvs-hero h1{color:#fff;font-size:46px;line-height:1.12;font-weight:700;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:22px}
+.nvs-hero h1{color:#fff;font-size:30px;line-height:1.12;font-weight:700;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:22px}
 .nvs-hero p{color:rgba(255,255,255,.9);font-size:17px;line-height:1.6;margin-bottom:34px}
 .nvs-hero-btns{display:flex;flex-wrap:wrap;gap:18px}
 .nvs-btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 28px;border-radius:4px;font-size:15px;font-weight:600;transition:all .25s ease}
@@ -155,7 +146,9 @@
         <div class="container">
             <div class="nvs-hero-content" data-aos="fade-up">
                 <h1>Apparel Sourcing &amp; Manufacturing</h1>
-                <p>Nuvesta Global connects international buyers with Bangladesh's apparel manufacturing capabilities, providing coordinated support across product development, fabric &amp; trim sourcing, factory selection, production, quality control and shipment.</p>
+                <p>
+                    Nuvesta Global connects international buyers with Bangladesh's apparel manufacturing capabilities, providing coordinated support across product development, materials sourcing, factory selection, production follow-up, quality control and shipment.
+                </p>
                 <div class="nvs-hero-btns">
                     <a href="<?php echo e($quoteUrl); ?>" class="nvs-btn nvs-btn-primary">Send Your Requirement</a>
                     <a href="<?php echo e($productsUrl); ?>" class="nvs-btn nvs-btn-outline">Our Products</a>
@@ -169,7 +162,7 @@
          ========================================================================== -->
     <section class="nvs-source">
         <div class="container">
-            <h2 class="nvs-section-title" data-aos="fade-up">What We Source</h2>
+            <h2 class="nvs-section-title" data-aos="fade-up"> We Source</h2>
             <div class="nvs-source-grid">
                 <?php $__currentLoopData = $sourceItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => [$name, $types, $file, $slug]): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <a href="<?php echo e($categoryUrl($slug)); ?>" class="nvs-source-item" data-aos="fade-up" data-aos-delay="<?php echo e(50 * $i); ?>">
@@ -187,22 +180,96 @@
          ========================================================================== -->
     <section class="nvs-services">
         <div class="container">
-            <h2 class="nvs-section-title" data-aos="fade-up">Our Sourcing &amp; Manufacturing Services</h2>
+            <h2 class="nvs-section-title" data-aos="fade-up">Our Services</h2>
             <div class="nvs-service-grid">
-                <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => [$title, $file, $points]): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="nvs-service-card" data-aos="fade-up" data-aos-delay="<?php echo e(50 * $i); ?>">
+                <div class="nvs-service-card" data-aos="fade-up" data-aos-delay="0">
                     <div class="nvs-service-head">
-                        <span class="nvs-service-num"><?php echo e(sprintf('%02d', $i + 1)); ?></span>
-                        <h3><?php echo e($title); ?></h3>
+                        <!-- <span class="nvs-service-num">01</span> -->
+                        <h3>Product Development</h3>
                     </div>
-                    <div class="nvs-service-img"><img src="<?php echo e($img($file)); ?>" alt="<?php echo e($title); ?>" loading="lazy"></div>
+                    <div class="nvs-service-img"><img src="<?php echo e(asset('welcome/images/sourcing/svc-1.webp')); ?>" alt="Product Development" loading="lazy"></div>
                     <ul class="nvs-service-list">
-                        <?php $__currentLoopData = $points; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $point): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li><?php echo e($point); ?></li>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <li>Tech Pack Review</li>
+                        <li>Sketch/Design Review</li>
+                        <li>Fit Sample Review</li>
+                        <li>Follow Construction, Workmanship</li>
+                        <li>Costing Confirm on Sample Development</li>
                     </ul>
                 </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <div class="nvs-service-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="nvs-service-head">
+                        <!-- <span class="nvs-service-num">02</span> -->
+                        <h3>Material Sourcing</h3>
+                    </div>
+                    <div class="nvs-service-img"><img src="<?php echo e(asset('welcome/images/sourcing/svc-2.webp')); ?>" alt="Fabric &amp; Material Sourcing" loading="lazy"></div>
+                    <ul class="nvs-service-list">
+                        <li>Woven Fabric Sourcing:</li>
+                        <li>Cotton Twill/Poplin/Stretch</li>
+                        <li>Canvas/Corduroy/Chambray</li>
+                        <li>Denim/Oxford</li>
+
+                        <li>Nylon/Polyester/Spandex</li>
+                        <li>Ripstop/Softshell/Water-Repellent</li>
+
+                        <li>Knit Fabric Sourcing:</li>
+                        <li>Jersey/Interlock/Pique</li>
+                        <li>Fleece/French Terry</li>
+                        <li>Trims &amp; accessories</li>
+                    </ul>
+                </div>
+                <div class="nvs-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="nvs-service-head">
+                        <!-- <span class="nvs-service-num">03</span> -->
+                        <h3>Factory &amp; Manufacturing</h3>
+                    </div>
+                    <div class="nvs-service-img"><img src="<?php echo e(asset('welcome/images/sourcing/svc-3.webp')); ?>" alt="Factory &amp; Manufacturing" loading="lazy"></div>
+                    <ul class="nvs-service-list">
+                        <li>Product Capability</li>
+                        <li>Production Capacity</li>
+                        <li>Production Follow-up</li>
+                        <li>Compliance support</li>
+                        <li>Lead time management</li>
+                    </ul>
+                </div>
+                <div class="nvs-service-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="nvs-service-head">
+                        <!-- <span class="nvs-service-num">04</span> -->
+                        <h3>Production Management</h3>
+                    </div>
+                    <div class="nvs-service-img"><img src="<?php echo e(asset('welcome/images/sourcing/svc-4.webp')); ?>" alt="Production Management" loading="lazy"></div>
+                    <ul class="nvs-service-list">
+                        <li>Material Inventory </li>
+                        <li>Cutting, Sewing, Finishing</li>
+                       
+                        <li>Delivery schedule</li>
+                    </ul>
+                </div>
+                <div class="nvs-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="nvs-service-head">
+                        <!-- <span class="nvs-service-num">05</span> -->
+                        <h3>Quality Assurance</h3>
+                    </div>
+                    <div class="nvs-service-img"><img src="<?php echo e(asset('welcome/images/sourcing/svc-5.webp')); ?>" alt="Quality Assurance" loading="lazy"></div>
+                    <ul class="nvs-service-list">
+                        <li>Material inspection</li>
+                        <li>Inline quality control</li>
+                        <li>Final inspection</li>
+                        <li>Packing verification</li>
+                    </ul>
+                </div>
+                <div class="nvs-service-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="nvs-service-head">
+                        <!-- <span class="nvs-service-num">06</span> -->
+                        <h3>Export &amp; Logistics</h3>
+                    </div>
+                    <div class="nvs-service-img"><img src="<?php echo e(asset('welcome/images/sourcing/svc-6.webp')); ?>" alt="Export &amp; Logistics" loading="lazy"></div>
+                    <ul class="nvs-service-list">
+                        <li>Export documentation</li>
+                        <li>Container loading</li>
+                        <li>Sea / Air freight</li>
+                        <li>Delivery to destination</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>

@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 /**
- * Canvas tote bag collection → "Tote Bag" main product category
- * (creates the top-level Tote Bag category if missing).
+ * Canvas tote bag collection → "Accessories" main product category
+ * (creates the top-level Accessories category if missing).
  *
  *   php artisan db:seed --class=ToteBagSeeder
  */
@@ -15,7 +15,7 @@ class ToteBagSeeder extends ProductCatalogSeeder
 {
     protected function categorySlug(): string
     {
-        return 'tote-bag';
+        return 'accessories';
     }
 
     protected function imageDir(): string
@@ -25,10 +25,10 @@ class ToteBagSeeder extends ProductCatalogSeeder
 
     public function run(): void
     {
-        if (!DB::table('attributes')->where('type', 0)->where('slug', 'tote-bag')->exists()) {
+        if (!DB::table('attributes')->where('type', 0)->where('slug', 'accessories')->exists()) {
             DB::table('attributes')->insert([
-                'name'        => 'Tote Bag',
-                'slug'        => 'tote-bag',
+                'name'        => 'Accessories',
+                'slug'        => 'accessories',
                 'parent_id'   => null,
                 'type'        => 0,
                 'status'      => 'active',
@@ -38,7 +38,7 @@ class ToteBagSeeder extends ProductCatalogSeeder
                 'created_at'  => Carbon::now(),
                 'updated_at'  => Carbon::now(),
             ]);
-            $this->command->info('  created main category Tote Bag');
+            $this->command->info('  created main category Accessories');
         }
 
         parent::run();

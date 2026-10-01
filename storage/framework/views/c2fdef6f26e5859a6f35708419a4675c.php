@@ -732,6 +732,22 @@ $.ajax({
 
 });
 
+// Load pagination links of the product list via ajax (keeps selected sub-category / search)
+$(document).on('click', '.ajaxProductList .paginationPart a', function (e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+    if (!url) return;
+    $.ajax({
+        url: url,
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            $('.ajaxProductList').html(data.viewData);
+            $('html, body').animate({ scrollTop: $('.ajaxProductList').offset().top - 150 }, 300);
+        }
+    });
+});
+
 function filterAction() {
 
     let categoryId = $('#selectedCategory').val();

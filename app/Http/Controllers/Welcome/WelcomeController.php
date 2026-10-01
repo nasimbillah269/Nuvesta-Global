@@ -181,11 +181,9 @@ class WelcomeController extends Controller
             $ids = $ctg->subctgs->pluck('id')->push($ctg->id);
             $productIds = PostAttribute::where('type',0)->whereIn('reff_id',$ids)->pluck('src_id')->unique();
             $products = Post::where('type',2)->where('status','active')->whereIn('id',$productIds);
-            $ctg->productsTotal = (clone $products)->count();
             // image: category image, otherwise the newest product image of that category
             $ctg->cardImage = $ctg->imageFile ? $ctg->imageFile->file_url
-                : optional((clone $products)->latest()->first())->image();
-            $ctg->subNames = $ctg->subctgs->pluck('name')->unique()->values();
+                : optional($products->latest()->first())->image();
         });
 
       return view(welcomeTheme().'index',compact(
@@ -662,29 +660,28 @@ class WelcomeController extends Controller
           ->whereIn('src_id',(clone $base)->select('id'))
           ->selectRaw('reff_id, COUNT(DISTINCT src_id) as total')
           ->groupBy('reff_id')->pluck('total','reff_id');
-        // only top-level categories as tabs (sub-categories share names like "Men's", "Kids")
+        // only top-level categories as tabs (sub-categories share names like "Men's", "Kids"), in fixed display order
+        $tabOrder = ['menswear','womenswear','kidswear','outerwear','activewear','workwear','accessories'];
         $facets = Attribute::where('type',0)->where('status','active')->whereNull('parent_id')
           ->whereIn('id',$categoryCounts->keys())->orderBy('name')->get(['id','name','slug'])
+          ->sortBy(fn($c) => ($i = array_search($c->slug,$tabOrder)) === false ? 99 : $i)->values()
           ->each(fn($c) => $c->total = $categoryCounts[$c->id]);
         $totalProducts = (clone $base)->count();
 
-        // selected category (any depth), its ancestor chain, children and siblings that have products
+        // selected category (any depth) and its ancestor chain
         $current = $r->category ? Attribute::where('type',0)->where('status','active')->where('slug',$r->category)->first() : null;
         $ancestors = collect();
         for($a = $current; $a && $a->parent_id && $ancestors->count() < 10; ){
           $a = Attribute::where('type',0)->find($a->parent_id);
           if($a) $ancestors->prepend($a);
         }
-        $parentCat = $ancestors->last();
         $childrenOf = fn($id) => Attribute::where('type',0)->where('status','active')->where('parent_id',$id)
             ->whereIn('id',$categoryCounts->keys())->orderBy('name')->get(['id','name','slug'])
             ->each(fn($c) => $c->total = $categoryCounts[$c->id]);
-        $subcats  = $current ? $childrenOf($current->id) : collect();
-        $siblings = $parentCat ? $childrenOf($parentCat->id) : collect();
-        $subcats->each(fn($c) => $c->cover = (clone $base)->whereHas('productCategories',fn($q) => $q->where('attributes.id',$c->id))
-            ->with('imageFile')->latest()->first());
-        // a category with sub-categories lists its sub-categories instead of products
-        $showSubcats = $subcats->count() > 0;
+        // sub-category chip rows: one row per level of the selected path that has children
+        $chain = $current ? $ancestors->concat([$current])->each(fn($c) => $c->total = $categoryCounts[$c->id] ?? 0) : collect();
+        $subnavRows = $chain->map(fn($cat) => (object)['cat' => $cat, 'items' => $childrenOf($cat->id)])
+          ->filter(fn($row) => $row->items->count())->values();
 
         $products = clone $base;
         if($r->category){
@@ -698,7 +695,7 @@ class WelcomeController extends Controller
         }
         $products = $products->with(['imageFile','bannerFile'])->paginate(12)->withQueryString();
 
-        return view(welcomeTheme().'products.latestProducts',compact('products','page','facets','totalProducts','current','ancestors','parentCat','subcats','siblings','showSubcats'));
+        return view(welcomeTheme().'products.latestProducts',compact('products','page','facets','totalProducts','current','ancestors','chain','subnavRows'));
       }
 
       return view(welcomeTheme().'pages.pageView',compact('page'));

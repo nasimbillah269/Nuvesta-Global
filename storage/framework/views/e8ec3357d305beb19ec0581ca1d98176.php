@@ -125,19 +125,17 @@
         'url'   => route('productCategory',$ctg->slug?:'no-title'),
         'img'   => $ctg->cardImage ?: ($fallback ? 'welcome/images/home/p-'.$fallback.'.jpg' : 'medies/noimage.jpg'),
         'name'  => $ctg->name,
-        'count' => $ctg->productsTotal ? $ctg->productsTotal.' '.Str::plural('Product',$ctg->productsTotal) : 'Explore range',
-        'subs'  => $ctg->subNames->implode(' · '),
       ];
     });
   }else{
     $productCards = collect([
-      ['pants','Pants & Shorts','Chinos · Cargo · Casual · Denim'],
-      ['outerwear','Outerwear','Jackets · Puffer · Technical · Workwear'],
-      ['shirts','Shirts','Woven · Flannel · Oxford · Poplin'],
-      ['knitwear','Knitwear','T-Shirts · Polo · Sweatshirts · Hoodies'],
-      ['activewear','Activewear','Sportswear · Performance · Underwear'],
-      ['denim','Denim','Jeans · Shorts · Jackets · Washed'],
-    ])->map(fn($p) => ['url' => '#', 'img' => 'welcome/images/home/p-'.$p[0].'.jpg', 'name' => $p[1], 'count' => 'Explore range', 'subs' => $p[2]]);
+      ['pants','Pants & Shorts'],
+      ['outerwear','Outerwear'],
+      ['shirts','Shirts'],
+      ['knitwear','Knitwear'],
+      ['activewear','Activewear'],
+      ['denim','Denim'],
+    ])->map(fn($p) => ['url' => '#', 'img' => 'welcome/images/home/p-'.$p[0].'.jpg', 'name' => $p[1]]);
   }
 ?>
 <section class="products">
@@ -162,9 +160,7 @@
             <a href="<?php echo e($card['url']); ?>" class="ctg-card">
               <div class="ctg-img"><img src="<?php echo e(asset($card['img'])); ?>" alt="<?php echo e($card['name']); ?>" loading="lazy"></div>
               <div class="ctg-body">
-                <span class="ctg-count"><?php echo e($card['count']); ?></span>
                 <h6 class="ctg-name"><?php echo e($card['name']); ?></h6>
-                <p class="ctg-subs"><?php echo e($card['subs'] ?: 'View collection'); ?></p>
                 <span class="ctg-go"><i class="bi bi-arrow-up-right"></i></span>
               </div>
             </a>

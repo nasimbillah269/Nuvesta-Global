@@ -218,7 +218,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
         <div class="container">
             <div class="row g-5 align-items-stretch">
                 <!-- Left Portrait Card -->
-                <div class="col-lg-4 col-md-5" data-aos="fade-up">
+                <!-- <div class="col-lg-4 col-md-5" data-aos="fade-up">
                     <div class="about-director-card">
                         <div class="about-director-img-wrap">
                             <img src="<?php echo e(asset('welcome/images/home/founder.jpg')); ?>" alt="MD Ariful Islam">
@@ -229,25 +229,40 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
                             <span class="about-director-tagline">Global Sourcing, Local Expertise</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Right Message details -->
-                <div class="col-lg-8 col-md-7 d-flex align-items-center" data-aos="fade-up" data-aos-delay="150">
+                <div class="col-lg-12 col-md-12 d-flex align-items-center" data-aos="fade-up" data-aos-delay="150">
                     <div class="about-director-message-box">
                         
-                        <h2 class="about-director-heading">Message from the Managing Director</h2>
-                        
+                        <h2 class="about-director-heading mb-2">Message from  Managing Director</h2>
+                        <h5 class="about-director-subheading">Reliable Sourcing. Real Partnership.</h5>
+
                         <div class="about-director-quote">
                             <p class="mb-3">
-                                At Nuvesta Global LLC, we build strong partnerships between global buyers and the best manufacturers in Bangladesh. Our focus is on quality, transparency, and timely delivery.
+                                At Nuvesta Global LLC, we make international apparel sourcing simpler, more transparent and more reliable.
                             </p>
-                            <p>
-                                From factory sourcing and product development to quality control and logistics, we manage every step of the process to ensure our clients receive products that meet their expectations.
+                            <p class="mb-3">
+                                We connect buyers with trusted manufacturing and sourcing capabilities in Bangladesh, supported by our European presence in Lithuania.
+                            </p>
+                            <p class="mb-3">
+                                Our role is straightforward: understand your requirements, source the right solutions, control quality and deliver on time.
+                            </p>
+                            <p class="mb-3">
+                                From product development, fabrics and sampling to production, quality assurance and shipment, we manage the process with close attention to detail.
+                            </p>
+                            <p class="mb-3">
+                                Our commitment is to build long-term relationships based on trust, communication and consistent performance.
+                            </p>
+                            <p class="about-director-motto">
+                                We source with purpose.<br>
+                                We execute with responsibility.<br>
+                                We deliver with confidence.
                             </p>
                         </div>
 
                         <div class="about-director-sig-wrap">
-                            <h4 class="about-director-name mb-1">Md Ariful Islam</h4>
+                            <h4 class="about-director-name mb-1">Md. Ariful Islam</h4>
                             <span class="about-director-role">Managing Director, Nuvesta Global LLC</span>
                         </div>
                     </div>
@@ -261,33 +276,49 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
                 
 
                 <!-- Right Message details -->
-                <div class="col-lg-8 col-md-7 d-flex align-items-center" data-aos="fade-up" data-aos-delay="150">
+                <div class="col-lg-12 col-md-12 d-flex align-items-center" data-aos="fade-up" data-aos-delay="150">
                     <div class="about-director-message-box">
                         
-                        <h2 class="about-director-heading">Message from the Director</h2>
-                        
+                        <h2 class="about-director-heading mb-2">Message from  Director</h2>
+                        <h5 class="about-director-subheading">Building trust through knowledge, sourcing and execution.</h5>
+
                         <div class="about-director-quote">
                             <p class="mb-3">
-                                At Nuvesta Global LLC, we build strong partnerships between global buyers and the best manufacturers in Bangladesh. Our focus is on quality, transparency, and timely delivery.
+                                At Nuvesta Global, our purpose is to make international sourcing simpler, more transparent and more reliable.
                             </p>
-                            <p>
-                                From factory sourcing and product development to quality control and logistics, we manage every step of the process to ensure our clients receive products that meet their expectations.
+                            <p class="mb-3">
+                                With over 26 years of experience in apparel merchandising, product development, costing, sourcing and production, I understand the importance of combining buyer expectations with the right products, materials, factories and commercial solutions.
+                            </p>
+                            <p class="mb-3">
+                                From our European presence in Lithuania and our established sourcing network in Bangladesh, Nuvesta connects international buyers with reliable manufacturing and sourcing opportunities.
+                            </p>
+                            <p class="mb-3">
+                                We support the journey from product concept and material sourcing to sampling, costing, quality, production and shipment&mdash;with a clear focus on communication, accountability and long-term relationships.
+                            </p>
+                            <p class="mb-0">
+                                Our philosophy is simple:
+                            </p>
+                            <p class="about-director-motto mt-2 mb-3">
+                                Understand. Source. Develop. Deliver.
+                            </p>
+                            <p class="mb-0">
+                                We welcome the opportunity to work with buyers and partners who value quality, transparency and dependable sourcing.
                             </p>
                         </div>
 
                         <div class="about-director-sig-wrap">
-                            <h4 class="about-director-name mb-1">Abu Shadath Sayem Khan</h4>
-                            <span class="about-director-role">Director, Nuvesta Global LLC</span>
+                            <h4 class="about-director-name mb-1">Sayem Khan</h4>
+                            <span class="about-director-role">Director | Nuvesta Global LLC</span>
                         </div>
                     </div>
                 </div>
                 
                 
                 <!-- Left Portrait Card -->
-                <div class="col-lg-4 col-md-5" data-aos="fade-up">
+                <!-- <div class="col-lg-4 col-md-5" data-aos="fade-up">
                     <div class="about-director-card">
                         <div class="about-director-img-wrap">
-                            <img src="<?php echo e(asset('welcome/images/home/professional-male-avatar-profile-picture-employee-work_1322206-66523.webp')); ?>" alt="MD Ariful Islam">
+                            <img src="<?php echo e(asset('welcome/images/home/director-sayem-khan.jpg')); ?>" alt="Abu Shadath Sayem Khan" style="object-position: center top;">
                         </div>
                         <div class="about-director-meta">
                             <h3 class="about-director-name">Abu Shadath Sayem Khan</h3>
@@ -295,7 +326,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
                             <span class="about-director-tagline">Global Sourcing, Local Expertise</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
