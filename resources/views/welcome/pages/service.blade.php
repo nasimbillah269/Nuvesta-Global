@@ -372,7 +372,7 @@
                 <p class="services-cta-text">
                     Partner with Nuvesta Global LLC for dependable apparel sourcing, quality assurance, and efficient supply chain solutions that help your business grow with confidence.
                 </p>
-                <a href="contact.html" class="services-cta-button">Book Your Consultation</a>
+                <a href="{{($quotePage = pageTemplate('Get A Quote')) ? route('pageView',$quotePage->slug) : url('get-a-quote')}}" class="services-cta-button">Book Your Consultation</a>
             </div>
         </div>
     </section>

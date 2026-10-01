@@ -243,12 +243,10 @@
 <!-- ================= ABOUT + CTA ================= -->
 <section class="about-band">
   <div class="d-none d-xl-block"></div>
-  <div class="about-photo" data-aos="fade-up" role="img" aria-label="MD Ariful Islam, founder of Nuvesta Global" style="background-image:url('<?php echo e(asset('welcome/images/home/founder.jpg')); ?>')"></div>
   <div class="about-text" data-aos="fade-up" data-aos-delay="100">
     <p class="eyebrow light">About Nuvesta</p>
-    <h3>Built on 26+ Years of<br>Apparel Experience</h3>
+    <h3>Built on Apparel Experience</h3>
     <p>Nuvesta Global LLC was created to combine decades of hands-on apparel experience with a modern, transparent approach to international sourcing.</p>
-    <a href="<?php echo e(($aboutPage = pageTemplate('About Us')) ? route('pageView',$aboutPage->slug) : url('about-us')); ?>" class="nv-btn nv-btn-light">Meet MD Ariful Islam <i class="bi bi-arrow-right"></i></a>
   </div>
   <div class="expertise" data-aos="fade-up" data-aos-delay="200">
     <h6>My core expertise includes:</h6>

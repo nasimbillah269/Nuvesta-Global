@@ -355,7 +355,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
             <p class="about-banner-text mx-auto">
                 Partner with Nuvesta Global LLC for reliable sourcing solutions, premium quality products, and seamless supply chain management—helping your business grow with confidence.
             </p>
-            <a href="contact.html" class="about-banner-button">Book Your Consultation</a>
+            <a href="<?php echo e(($quotePage = pageTemplate('Get A Quote')) ? route('pageView',$quotePage->slug) : url('get-a-quote')); ?>" class="about-banner-button">Book Your Consultation</a>
         </div>
     </section>
 

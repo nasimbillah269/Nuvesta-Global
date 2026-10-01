@@ -312,11 +312,11 @@
 /* =====================================================================
    ABOUT + CTA BAND
    ===================================================================== */
-.nv .about-band{background:var(--nv-navy-2);color:#fff;display:grid;grid-template-columns:3.4% 16.2% 26.6% 23.8% 30%;min-height:210px}
-.nv .about-photo{grid-column:2;background-size:cover;background-position:center 30%;align-self:stretch;}
-.nv .about-text{padding:24px 30px 24px 28px;align-self:center}
+.nv .about-band{background:var(--nv-navy-2);color:#fff;display:grid;grid-template-columns:3.4% 36.6% 30% 30%;min-height:210px}
+.nv .about-text{padding:24px 40px 24px 28px;align-self:center}
 .nv .about-text h3{font-size:20px;line-height:1.35;font-weight:600;color:#fff;margin-bottom:10px}
 .nv .about-text p{font-size:12px;line-height:1.55;color:rgba(255,255,255,.9);margin-bottom:20px}
+.nv .about-text p:last-child{margin-bottom:0}
 .nv .expertise{padding:24px 26px;align-self:center;border-left:1px solid rgba(255,255,255,.14);margin:22px 0}
 .nv .expertise h6{font-size:13px;font-weight:600;color:#fff;margin-bottom:12px}
 .nv .expertise .check-list li{font-size:11px;margin-bottom:3px}
@@ -378,8 +378,7 @@
   .nv.site-header .nav-link{padding:10px 4px!important}
   .nv.site-header .nav-link.active::after{display:none}
   .nv.site-header .dropdown-menu{border:0;box-shadow:none;padding-left:12px}
-  .nv .about-band{grid-template-columns:220px 1fr 1fr}
-  .nv .about-photo{grid-column:1;margin:0}
+  .nv .about-band{grid-template-columns:1fr 1fr}
   .nv .cta-block{grid-column:1 / -1;min-height:220px}
 }
 
@@ -395,7 +394,6 @@
   .nv .platform-block::before{background:rgba(239,241,247,.92)}
   .nv .platform-content{max-width:none}
   .nv .about-band{grid-template-columns:1fr}
-  .nv .about-photo{height:320px;background-position:center 30%}
   .nv .about-text,.nv .expertise{padding:26px 20px}
   .nv .expertise{border-left:0;border-top:1px solid rgba(255,255,255,.14);margin:0 20px;padding-left:0;padding-right:0}
   .nv .cta-content{padding:36px 20px}
@@ -818,11 +816,9 @@ html.nv-drawer-lock .whatsapp-float,html.nv-search-lock .whatsapp-float,html.nv-
 @media (min-width:768px) and (max-width:991.98px){
   .nv .why-box{justify-content:center}
   .nv .why-item{border-bottom:0!important}
-  .nv .about-band{grid-template-columns:300px 1fr}
-  .nv .about-photo{grid-column:1;grid-row:1 / span 2;height:auto;min-height:420px}
-  .nv .about-text{grid-column:2;padding:32px 30px 10px}
-  .nv .expertise{grid-column:2;margin:10px 30px 0;padding:18px 0 30px}
-  .nv .expertise .check-list{columns:2;column-gap:16px}
+  .nv .about-band{grid-template-columns:1fr 1fr}
+  .nv .about-text{grid-column:1;padding:32px 30px}
+  .nv .expertise{grid-column:2;margin:32px 30px 32px 0;padding:0 0 0 30px;border-top:0;border-left:1px solid rgba(255,255,255,.14)}
   .nv .cta-block{grid-column:1 / -1;min-height:0}
   .nv .cta-content{padding:36px 30px}
 }
@@ -915,7 +911,6 @@ html.nv-drawer-lock .whatsapp-float,html.nv-search-lock .whatsapp-float,html.nv-
   .nv .why-item p{font-size:12px}
 
   /* ---------- about + cta ---------- */
-  .nv .about-photo{height:340px;margin:0;background-position:center 28%}
   .nv .about-text{padding:30px 20px 10px}
   .nv .about-text h3{font-size:22px}
   .nv .about-text p{font-size:13.5px}
