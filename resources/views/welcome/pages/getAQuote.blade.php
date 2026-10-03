@@ -35,7 +35,7 @@
         <div class="container">
             <h1 class="contact-cover-title">{{$page->name}}</h1>
             <div class="contact-cover-breadcrumb">
-                <a href="index.html">Home</a>
+                <a href="{{route('index')}}">Home</a>
                 <span class="separator"><i class="fa-solid fa-chevron-right"></i></span>
                 <span class="current">{{$page->name}}</span>
             </div>
@@ -153,12 +153,9 @@
 
             <select name="product_category" class="form-select" required>
                 <option value="">Select Category</option>
-                <option value="Knitwear" {{ old('product_category')=='Knitwear'?'selected':'' }}>Knitwear</option>
-                <option value="Woven" {{ old('product_category')=='Woven'?'selected':'' }}>Woven</option>
-                <option value="Denim" {{ old('product_category')=='Denim'?'selected':'' }}>Denim</option>
-                <option value="Sportswear" {{ old('product_category')=='Sportswear'?'selected':'' }}>Sportswear</option>
-                <option value="Kidswear" {{ old('product_category')=='Kidswear'?'selected':'' }}>Kidswear</option>
-                <option value="Outerwear" {{ old('product_category')=='Outerwear'?'selected':'' }}>Outerwear</option>
+                @foreach(['Menswear', 'Womenswear', 'Kidswear', 'Outerwear', 'Activewear', 'Workwear', 'Accessories'] as $category)
+                <option value="{{ $category }}" {{ old('product_category')==$category?'selected':'' }}>{{ $category }}</option>
+                @endforeach
             </select>
 
             @error('product_category')

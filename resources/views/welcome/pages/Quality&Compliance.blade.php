@@ -432,7 +432,7 @@
         <div class="container">
             <h1 class="about-cover-title">{{$page->name}}</h1>
             <div class="about-cover-breadcrumb">
-                <a href="index.html">Home</a>
+                <a href="{{route('index')}}">Home</a>
                 <span class="separator"><i class="fa-solid fa-chevron-right"></i></span>
                 <span class="current">{{$page->name}}</span>
             </div>

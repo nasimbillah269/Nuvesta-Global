@@ -17,6 +17,13 @@
       ->orderByDesc('fetured')->orderBy('view')->orderBy('name')
       ->limit(8)->get(['id','name','slug']);
 
+  // fixed display order; categories not listed here follow at the end
+  $footerOrder = ['menswear', 'womenswear', 'kidswear', 'outerwear', 'activewear', 'workwear', 'accessories'];
+  $footerCategories = $footerCategories->sortBy(function ($c) use ($footerOrder) {
+      $i = array_search(strtolower(trim($c->name)), $footerOrder);
+      return $i === false ? count($footerOrder) : $i;
+  })->values();
+
   // "Bangladesh Office: House 33, …" -> ['Bangladesh Office', 'House 33, …']
   $addresses = collect([$gs->address_one, $gs->address_two])->filter()->map(function ($a) {
       $parts = explode(':', $a, 2);
@@ -42,7 +49,7 @@
         <a href="<?php echo e(route('index')); ?>" class="brand">
           <img src="<?php echo e(asset($gs->footerLogo())); ?>" alt="<?php echo e($gs->title ?: 'Nuvesta Global LLC'); ?>" class="brand-logo">
         </a>
-        <p class="footer-tag">Global Apparel Sourcing &amp; Product Development</p>
+        <p class="footer-tag">Global Apparel Sourcing &amp; Product Development .</p>
         <?php if($socials->count()): ?>
         <div class="footer-social">
           <?php $__currentLoopData = $socials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as [$url, $icon, $label]): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -90,7 +97,7 @@
       <div class="footer-col footer-map">
         <img src="<?php echo e(asset('welcome/images/home/worldmap.png')); ?>" alt="" aria-hidden="true">
         <div class="footer-regions"><span>Bangladesh</span><span>Lithuania / Europe</span><span>Global Markets</span></div>
-        <p class="copyright">&copy; <?php echo e(date('Y')); ?> Nuvesta Global LLC. All rights reserved.</p>
+        <p class="copyright">&copy; 2025 Nuvesta Global LLC. All rights reserved.</p>
       </div>
     </div>
   </div>

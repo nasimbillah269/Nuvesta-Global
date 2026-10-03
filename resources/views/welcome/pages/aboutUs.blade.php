@@ -24,7 +24,7 @@
         <div class="container">
             <h1 class="about-cover-title">About Us</h1>
             <div class="about-cover-breadcrumb">
-                <a href="index.html">Home</a>
+                <a href="{{route('index')}}">Home</a>
                 <span class="separator"><i class="fa-solid fa-chevron-right"></i></span>
                 <span class="current">About Us</span>
             </div>
@@ -54,7 +54,7 @@ We coordinate product development, fabric and trim sourcing, costing, sampling, 
 </b>
                     </p>
                     
-                    <span class="about-intro-label">  Why Nuvesta?</span>
+                    <span class="about-intro-label">  Why Nuvesta</span>
                     
                     <p>
                        <b> European Presence</b>

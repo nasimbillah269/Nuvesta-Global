@@ -18,7 +18,7 @@
         <div class="container">
             <h1 class="services-cover-title">Our Sourcing &amp; Service</h1>
             <div class="services-cover-breadcrumb">
-                <a href="index.html">Home</a>
+                <a href="{{route('index')}}">Home</a>
                 <span class="separator"><i class="fa-solid fa-chevron-right"></i></span>
                 <span class="current">Sourcing &amp; Service</span>
             </div>

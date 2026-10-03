@@ -37,7 +37,7 @@
         <div class="container">
             <h1 class="contact-cover-title">Contact Us</h1>
             <div class="contact-cover-breadcrumb">
-                <a href="index.html">Home</a>
+                <a href="<?php echo e(route('index')); ?>">Home</a>
                 <span class="separator"><i class="fa-solid fa-chevron-right"></i></span>
                 <span class="current">Contact Us</span>
             </div>
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         
-                        <div class="contact-info-card">
+                        <!-- <div class="contact-info-card">
                             <div class="contact-icon-box">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
@@ -78,7 +78,7 @@
                                 <h4>Bangladesh Office</h4>
                                 <p>House 33, (5th Floor), Road 3 Sector 9,<br>Uttara, Dhaka 1230 Bangladesh.</p>
                             </div>
-                        </div>
+                        </div> -->
 
                         
 
@@ -179,7 +179,7 @@
         <div class="container">
             
         <div class="contact-map-wrapper">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14594.301386702586!2d90.3888365126839!3d23.86922986348425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c41a3cd378d3%3A0xc0fb19572b9a76bc!2sSector%209%2C%20Dhaka%201230!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2303.352905310409!2d25.21460107608246!3d54.73859627272566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd91a208f77fc1%3A0x11f78ed93b001c1e!2sGiruli%C5%B3%20g.%205%2C%20Vilnius%2C%2012124%20Vilniaus%20m.%20sav.%2C%20Lithuania!5e0!3m2!1sen!2sbd!4v1790854336004!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
         </div>
     </section>

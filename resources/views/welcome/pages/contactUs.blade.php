@@ -128,7 +128,7 @@
         <div class="container">
             <h1 class="contact-cover-title">Contact Us</h1>
             <div class="contact-cover-breadcrumb">
-                <a href="index.html">Home</a>
+                <a href="{{route('index')}}">Home</a>
                 <span class="separator"><i class="fa-solid fa-chevron-right"></i></span>
                 <span class="current">Contact Us</span>
             </div>

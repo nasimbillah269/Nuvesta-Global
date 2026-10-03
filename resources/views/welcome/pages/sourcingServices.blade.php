@@ -19,13 +19,13 @@
   $categoryUrl  = fn ($slug) => $productsUrl.'?category='.$slug;
 
   $sourceItems = [
-    ['Pants',       'Chino, Cargo, Casual',       'src-pants.webp',      'pants'],
-    ['Shorts',      'Cargo, Chino, Boardshort',   'src-shorts.webp',     'shorts'],
+    ['Outerwear',   'Jackets, Rainwear, Fleece',  'src-outerwear.webp',  'outerwear'],
+    ['Activewear',  'Hiking, Joggers, Leggings',  'src-activewear.webp', 'activewear'],
     ['Shirts',      'Woven',                      'src-shirts.webp',     'shirts'],
     ['Polo Shirts', 'Knitwear',                   'src-polo.webp',       'knitwear'],
     ['T-Shirts',    'Knitwear',                   'src-tshirts.webp',    'knitwear'],
-    ['Outerwear',   'Jackets, Rainwear, Fleece',  'src-outerwear.webp',  'outerwear'],
-    ['Activewear',  'Hiking, Joggers, Leggings',  'src-activewear.webp', 'activewear'],
+    ['Pants',       'Chino, Cargo, Casual',       'src-pants.webp',      'pants'],
+    ['Shorts',      'Cargo, Chino, Boardshort',   'src-shorts.webp',     'shorts'],
   ];
 
   $swatches = [

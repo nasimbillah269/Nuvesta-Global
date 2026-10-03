@@ -580,7 +580,7 @@
                <div>    
                  <h3>Top Brands  </h3>
                  <h4>Up to 40% off </h4>
-                 <div class="link-hover-anim underline"><a class="btn btn_underline link-strong link-strong-unhovered" href="index.html">Shop Now
+                 <div class="link-hover-anim underline"><a class="btn btn_underline link-strong link-strong-unhovered" href="{{route('index')}}">Shop Now
                      <svg>
                        <use href="{{asset('welcome/assets/svg/icon-sprite.svg#arrow')}}"></use>
                      </svg></a><a class="btn btn_underline link-strong link-strong-hovered" href="#">Shop Now
@@ -608,17 +608,17 @@
      {{--<section class="section-t-space ratio3_3">
        <div class="container-fluid subscribe-banner">
          <div class="row align-items-center">
-           <div class="col-xl-8 col-md-7 col-12 px-0">  <a href="index.html"><img class="bg-img" src="{{asset('welcome/assets/images/banner/banner-6.png')}}" alt="" /></a></div>
+           <div class="col-xl-8 col-md-7 col-12 px-0">  <a href="{{route('index')}}"><img class="bg-img" src="{{asset('welcome/assets/images/banner/banner-6.png')}}" alt="" /></a></div>
            <div class="col-xl-4 col-5">
              <div class="subscribe-content">
                <h6>GET 20% OFF </h6>
                <h4>Subscribe to Our Newsletter! </h4>
                <p>Join the insider list - youâ€™ll be the first  know about new arrivals,  - only discounts and  $15 off your first . </p>
                <input type="text" name="text" placeholder="Your email address..." />
-               <div class="link-hover-anim underline"><a class="btn btn_underline link-strong link-strong-unhovered" href="index.html">Subscribe Now
+               <div class="link-hover-anim underline"><a class="btn btn_underline link-strong link-strong-unhovered" href="{{route('index')}}">Subscribe Now
                    <svg>
                      <use href="{{asset('welcome/assets/svg/icon-sprite.svg#arrow')}}"></use>
-                   </svg></a><a class="btn btn_underline link-strong link-strong-hovered" href="index.html">Subscribe Now
+                   </svg></a><a class="btn btn_underline link-strong link-strong-hovered" href="{{route('index')}}">Subscribe Now
                    <svg>
                      <use href="{{asset('welcome/assets/svg/icon-sprite.svg#arrow')}}"></use>
                    </svg></a></div>

@@ -25,23 +25,7 @@
 <?php $__env->startPush('css'); ?>
 <style>
 .nv .sp-head h1{margin-bottom:22px}
-.nv .sp-subnav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:-6px 0 22px}
-.nv .sp-subnav-label{font-size:13px;color:var(--nv-muted);margin-right:4px}
-.nv .sp-subchip{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;border:1px solid var(--nv-line);background:#fff;color:var(--nv-text);font-size:13.5px;text-decoration:none;transition:border-color .2s,color .2s}
-.nv .sp-subchip:hover{border-color:var(--nv-accent);color:var(--nv-accent-2)}
-.nv .sp-subchip.is-active{border-color:var(--nv-accent);color:var(--nv-accent-2);font-weight:600}
-.nv .sp-subchip span{font-size:11px;color:var(--nv-muted)}
-a.sp-cat{display:flex;flex-direction:column;height:100%;background:#fff;border:1px solid #e4e4e7;border-radius:4px;overflow:hidden;text-decoration:none;color:var(--nv-navy);transition:border-color .3s,box-shadow .3s}
-a.sp-cat:hover{border-color:var(--nv-navy);box-shadow:0 10px 26px rgba(30,49,91,.10)}
-.sp-cat-media{position:relative;padding-top:100%;background:#f2f2f3;overflow:hidden}
-.sp-cat-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-a.sp-cat:hover .sp-cat-media img{transform:scale(1.04)}
-.sp-cat-body{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px}
-.sp-cat-name{font-size:17px;font-weight:600;margin:0;color:var(--nv-navy)}
-.sp-cat-count{display:block;font-size:13px;color:var(--nv-muted);margin-top:2px}
-.sp-cat-arrow{flex:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--nv-soft);color:var(--nv-navy);transition:background .2s,color .2s}
-a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
-@media (max-width:575.98px){.sp-cat-body{padding:12px}.sp-cat-name{font-size:15px}.sp-cat-arrow{width:30px;height:30px}}
+.nv .sp-subfilters{padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--nv-line)}
 </style>
 <?php $__env->stopPush(); ?>
 
@@ -78,13 +62,12 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
       <!-- ================= TOOLBAR ================= -->
       <div class="sp-toolbar">
         <div class="sp-filters" role="group" aria-label="Filter by category">
-          <a href="<?php echo e($url(['category' => null, 'page' => null])); ?>" class="sp-chip <?php echo e(!$activeCategory ? 'is-active' : ''); ?>">All <span><?php echo e($totalProducts); ?></span></a>
+          <a href="<?php echo e($url(['category' => null, 'page' => null])); ?>" class="sp-chip <?php echo e(!$activeCategory ? 'is-active' : ''); ?>">All</a>
           <?php $__currentLoopData = $facets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $facet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <a href="<?php echo e($url(['category' => $facet->slug, 'page' => null])); ?>" class="sp-chip <?php echo e($activeTop==$facet->slug ? 'is-active' : ''); ?>"><?php echo e($facet->name); ?> <span><?php echo e($facet->total); ?></span></a>
+            <a href="<?php echo e($url(['category' => $facet->slug, 'page' => null])); ?>" class="sp-chip <?php echo e($activeTop==$facet->slug ? 'is-active' : ''); ?>"><?php echo e($facet->name); ?></a>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
 
-        <?php if (! ($showSubcats)): ?>
         <form class="sp-sort" action="<?php echo e($pageUrl); ?>" method="get">
           <?php if($activeCategory): ?><input type="hidden" name="category" value="<?php echo e($activeCategory); ?>"><?php endif; ?>
           <label for="spSort">Sort by</label>
@@ -94,42 +77,19 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </select>
         </form>
-        <?php endif; ?>
       </div>
 
-      <?php if($parentCat && $siblings->count() > 1): ?>
-        <!-- sibling sub-categories -->
-        <div class="sp-subnav" role="group" aria-label="<?php echo e($parentCat->name); ?> categories">
-          <span class="sp-subnav-label"><?php echo e($parentCat->name); ?>:</span>
-          <?php $__currentLoopData = $siblings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <a href="<?php echo e($url(['category' => $sc->slug, 'page' => null])); ?>" class="sp-subchip <?php echo e($activeCategory==$sc->slug ? 'is-active' : ''); ?>"><?php echo e($sc->name); ?> <span><?php echo e($sc->total); ?></span></a>
+      <!-- ================= SUB-CATEGORIES ================= -->
+      <?php $__currentLoopData = $subnavRows; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <div class="sp-filters sp-subfilters" role="group" aria-label="<?php echo e($row->cat->name); ?> categories">
+          <a href="<?php echo e($url(['category' => $row->cat->slug, 'page' => null])); ?>" class="sp-chip <?php echo e($activeCategory==$row->cat->slug ? 'is-active' : ''); ?>">All <?php echo e($row->cat->name); ?></a>
+          <?php $__currentLoopData = $row->items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <a href="<?php echo e($url(['category' => $sc->slug, 'page' => null])); ?>" class="sp-chip <?php echo e($chain->contains('slug',$sc->slug) ? 'is-active' : ''); ?>"><?php echo e($sc->name); ?></a>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
-      <?php endif; ?>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-      <?php if($showSubcats): ?>
-        <p class="sp-count"><?php echo e($subcats->count()); ?> <?php echo e(Str::plural('category',$subcats->count())); ?> in <?php echo e($current->name); ?></p>
-
-        <!-- ================= SUB-CATEGORIES ================= -->
-        <div class="row g-3 g-lg-4 row-cols-2 row-cols-md-3 row-cols-xl-4">
-          <?php $__currentLoopData = $subcats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="col" data-aos="fade-up" data-aos-delay="<?php echo e(($loop->index % 4) * 70); ?>">
-              <a href="<?php echo e($url(['category' => $sc->slug, 'page' => null, 'sort' => null])); ?>" class="sp-cat">
-                <div class="sp-cat-media">
-                  <?php if($sc->cover): ?><img src="<?php echo e(asset($sc->cover->image())); ?>" alt="<?php echo e($sc->name); ?>" loading="lazy"><?php endif; ?>
-                </div>
-                <div class="sp-cat-body">
-                  <div>
-                    <h3 class="sp-cat-name"><?php echo e($sc->name); ?></h3>
-                    <span class="sp-cat-count"><?php echo e($sc->total); ?> <?php echo e(Str::plural('product',$sc->total)); ?></span>
-                  </div>
-                  <span class="sp-cat-arrow"><i class="bi bi-arrow-right"></i></span>
-                </div>
-              </a>
-            </div>
-          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </div>
-      <?php elseif($products->total()): ?>
+      <?php if($products->total()): ?>
 
         <p class="sp-count">Showing <?php echo e($products->firstItem()); ?>–<?php echo e($products->lastItem()); ?> of <?php echo e($products->total()); ?> products</p>
 
@@ -174,9 +134,7 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
 <?php $__env->startPush('js'); ?>
 <script>
   // category chips: horizontal scroll on small screens (swipe, mouse drag, edge fades, active chip in view)
-  (function () {
-    var row = document.querySelector('.nv .sp-filters');
-    if (!row) return;
+  document.querySelectorAll('.nv .sp-filters').forEach(function (row) {
 
     function updateFades() {
       var max = row.scrollWidth - row.clientWidth;
@@ -213,7 +171,7 @@ a.sp-cat:hover .sp-cat-arrow{background:var(--nv-accent);color:#fff}
     row.addEventListener('scroll', updateFades, { passive: true });
     window.addEventListener('resize', updateFades);
     updateFades();
-  })();
+  });
 </script>
 <?php $__env->stopPush(); ?>
 
