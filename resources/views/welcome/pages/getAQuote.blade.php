@@ -85,7 +85,7 @@
     </div>
 @endif
 
-<form action="{{ route('contactMail') }}" method="POST">
+<form action="{{ route('quoteRequestSubmit') }}" method="POST">
     @csrf
 
     <div class="row">

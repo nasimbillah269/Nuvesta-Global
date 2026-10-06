@@ -82,7 +82,7 @@
     </div>
 <?php endif; ?>
 
-<form action="<?php echo e(route('contactMail')); ?>" method="POST">
+<form action="<?php echo e(route('quoteRequestSubmit')); ?>" method="POST">
     <?php echo csrf_field(); ?>
 
     <div class="row">

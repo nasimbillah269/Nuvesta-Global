@@ -748,6 +748,38 @@ class WelcomeController extends Controller
       return back();
     }
     
+    public function quoteRequestSubmit(Request $r){
+
+      $r->validate([
+          'name' => 'required|max:100',
+          'company_name' => 'required|max:150',
+          'email' => 'required|email|max:100',
+          'phone' => 'required|max:50',
+          'country' => 'required|max:100',
+          'product_category' => 'required|max:100',
+          'order_volume' => 'required|max:100',
+          'brief_order' => 'nullable|max:255',
+          'preferred_date' => 'required|date',
+          'preferred_time' => 'required|max:20',
+          'message' => 'nullable|max:5000',
+      ]);
+
+        if(general()->mail_status && general()->mail_from_address){
+            //Mail Data
+            $datas =array('r'=>$r);
+            $template ='mails.quoteMail';
+            $toEmail =general()->mail_from_address;
+            $toName =general()->mail_from_name;
+            $subject ='New Quotation Request - '.$r->company_name.' | '.general()->title;
+            $replyTo =['email'=>$r->email,'name'=>$r->name];
+
+            sendMail($toEmail,$toName,$subject,$datas,$template,null,$replyTo);
+        }
+
+      Session()->flash('success','Thank you! Your quotation request has been submitted successfully. Our team will contact you soon.');
+      return back();
+    }
+
     public function requestProductSubmit(Request $r){
 
       $check = $r->validate([

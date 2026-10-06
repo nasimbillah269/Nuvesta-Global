@@ -91,8 +91,6 @@
 
       @if($products->total())
 
-        <p class="sp-count">Showing {{$products->firstItem()}}–{{$products->lastItem()}} of {{$products->total()}} products</p>
-
         <!-- ================= GRID ================= -->
         <div class="row g-3 g-lg-4 row-cols-2 row-cols-md-3 row-cols-xl-4">
           @foreach($products as $product)

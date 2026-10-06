@@ -20,6 +20,7 @@ Route::get('/sitemap.xml',[WelcomeController::class,'siteMapXml'])->name('siteMa
 Route::get('/search',[WelcomeController::class,'search'])->name('search');
 Route::get('/search/live',[WelcomeController::class,'liveSearch'])->name('liveSearch');
 Route::post('/contact-mail',[WelcomeController::class,'contactMail'])->name('contactMail');
+Route::post('/quote-request-submit',[WelcomeController::class,'quoteRequestSubmit'])->name('quoteRequestSubmit');
 Route::post('/request-product-submit',[WelcomeController::class,'requestProductSubmit'])->name('requestProductSubmit');
 Route::post('/enquery-send/{slug}',[WelcomeController::class,'inquerySend'])->name('inquerySend');
 Route::post('/subscribe',[WelcomeController::class,'subscribe'])->name('subscribe');

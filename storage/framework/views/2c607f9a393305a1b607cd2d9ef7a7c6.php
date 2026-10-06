@@ -91,8 +91,6 @@
 
       <?php if($products->total()): ?>
 
-        <p class="sp-count">Showing <?php echo e($products->firstItem()); ?>–<?php echo e($products->lastItem()); ?> of <?php echo e($products->total()); ?> products</p>
-
         <!-- ================= GRID ================= -->
         <div class="row g-3 g-lg-4 row-cols-2 row-cols-md-3 row-cols-xl-4">
           <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
