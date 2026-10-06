@@ -12,7 +12,7 @@
 /* ---------- WHO WE ARE ---------- */
 .nv .who{padding:80px 0;background:linear-gradient(180deg,#f7f8fb 0%,#fff 100%);overflow:hidden}
 .nv .who-text{padding-right:24px}
-.nv .who h2{font-size:40px;line-height:1.15;font-weight:700;color:var(--nv-navy);letter-spacing:-.015em !important;margin-bottom:24px;padding-bottom:18px;position:relative}
+.nv .who h2{font-size:28px;line-height:1.2;font-weight:700;color:var(--nv-navy);letter-spacing:-.015em !important;margin-bottom:24px;padding-bottom:18px;position:relative}
 .nv .who h2::after{content:"";position:absolute;left:0;bottom:0;width:60px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--nv-accent),var(--nv-sky))}
 .nv .who-lead{font-size:16px !important;line-height:1.8 !important;color:var(--nv-text) !important;margin-bottom:24px !important;text-align:justify !important}
 .nv .who-tagline{font-size:15px !important;line-height:1.6 !important;font-weight:600;color:var(--nv-navy) !important;text-align:justify !important;
@@ -24,12 +24,9 @@
 .nv .who-photo{position:relative;z-index:1;border-radius:18px;overflow:hidden;box-shadow:0 24px 50px rgba(18,31,59,.18);aspect-ratio:4/3}
 .nv .who-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
 .nv .who-media:hover .who-photo img{transform:scale(1.04)}
-.nv .who-badge{position:absolute;z-index:2;left:0;bottom:48px;padding:14px 18px;background:#fff;border-radius:14px;box-shadow:0 14px 30px rgba(18,31,59,.16);display:flex;align-items:center;gap:12px}
-.nv .who-badge b{font-size:30px;line-height:1;font-weight:700;color:var(--nv-accent)}
-.nv .who-badge span{font-size:12px !important;line-height:1.35;color:var(--nv-navy) !important;font-weight:600}
 
 @media (max-width:1199.98px){
-  .nv .who h2{font-size:34px}
+  .nv .who h2{font-size:26px}
 }
 @media (max-width:991.98px){
   .nv .who{padding:56px 0}
@@ -37,10 +34,8 @@
 }
 @media (max-width:575.98px){
   .nv .who{padding:44px 0}
-  .nv .who h2{font-size:30px}
+  .nv .who h2{font-size:24px}
   .nv .who-media{padding:0 0 20px 16px}
-  .nv .who-badge{bottom:34px;padding:10px 14px}
-  .nv .who-badge b{font-size:24px}
 }
 </style>
 
@@ -59,7 +54,7 @@
     <div class="row g-5 align-items-center">
       <div class="col-lg-6" data-aos="fade-right">
         <div class="who-text">
-          <h2>Who We Are</h2>
+          <h2>who we are</h2>
           <p class="who-lead">Nuvesta Global is a Lithuania-registered apparel sourcing and supply company connecting buyers across Europe, the UK and the USA with trusted manufacturing and sourcing partners in Bangladesh and selected Asian markets. We coordinate product development, fabric and trim sourcing, costing, sampling, supplier selection, production follow-up, quality assurance and shipment—giving international buyers a structured sourcing partner from inquiry to delivery.</p>
           <p class="who-tagline">European presence. Bangladesh manufacturing access. International sourcing support.</p>
         </div>
@@ -67,7 +62,6 @@
       <div class="col-lg-6" data-aos="fade-left">
         <div class="who-media">
           <div class="who-photo"><img src="<?php echo e(asset('welcome/images/home/WhatsApp Image 2026-09-27 at 3.00.36 PM.jpeg')); ?>" alt="Nuvesta Global showroom and meeting room" loading="lazy"></div>
-          <div class="who-badge"><b>26+</b><span>Years of Apparel<br>Industry Experience</span></div>
         </div>
       </div>
     </div>
