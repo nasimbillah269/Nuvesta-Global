@@ -36,13 +36,13 @@
   });
 
   $validLink = fn ($l) => $l && $l !== '#' && filter_var($l, FILTER_VALIDATE_URL);
-  // Facebook, X, Instagram and LinkedIn are always shown; YouTube / Pinterest only when a link is set
+  // Facebook, X, Instagram, LinkedIn and YouTube are always shown; Pinterest only when a link is set
   $socials = collect([
       ['facebook_link',  'bi-facebook',  'Facebook',  true],
       ['twitter_link',   'bi-twitter-x', 'X (Twitter)', true],
       ['instagram_link', 'bi-instagram', 'Instagram', true],
       ['linkedin_link',  'bi-linkedin',  'LinkedIn',  true],
-      ['youtube_link',   'bi-youtube',   'YouTube',   false],
+      ['youtube_link',   'bi-youtube',   'YouTube',   true],
       ['pinterest_link', 'bi-pinterest', 'Pinterest', false],
   ])->map(fn ($s) => [$validLink($gs->{$s[0]}) ? $gs->{$s[0]} : null, $s[1], $s[2], $s[3]])
     ->filter(fn ($s) => $s[0] || $s[3]);
