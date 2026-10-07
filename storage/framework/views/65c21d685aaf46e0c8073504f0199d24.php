@@ -35,6 +35,7 @@
       </a>
 
       <div class="d-flex align-items-center gap-2 order-xl-3">
+        <a href="https://nuvestagloballlc.com/webmail" target="_blank" rel="noopener" class="nv-btn nv-btn-outline nv-btn-webmail">Web Mail</a>
         <?php if($headerButton && $headerButton->subMenus->count()): ?>
           <?php $__currentLoopData = $headerButton->subMenus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $btn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <a href="<?php echo e($menuUrl($btn)); ?>" <?php echo $target($btn); ?> class="nv-btn <?php echo e($loop->first ? 'nv-btn-navy' : 'nv-btn-outline'); ?> d-none d-sm-inline-flex"><?php echo e($btn->menuName()); ?></a>
@@ -100,6 +101,7 @@
 
     <div class="nv-drawer-foot">
       <div class="nv-drawer-btns">
+        <a href="https://nuvestagloballlc.com/webmail" target="_blank" rel="noopener" class="nv-btn nv-btn-outline">Web Mail <i class="bi bi-envelope"></i></a>
         <?php if($headerButton && $headerButton->subMenus->count()): ?>
           <?php $__currentLoopData = $headerButton->subMenus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $btn): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <a href="<?php echo e($menuUrl($btn)); ?>" <?php echo $target($btn); ?> class="nv-btn <?php echo e($loop->first ? 'nv-btn-navy' : 'nv-btn-outline'); ?>"><?php echo e($btn->menuName()); ?> <i class="bi bi-arrow-right"></i></a>

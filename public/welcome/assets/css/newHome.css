@@ -64,6 +64,7 @@
 .nv .nv-btn-light:hover{background:#fff;color:var(--nv-navy)}
 .nv .nv-btn-outline{background:#fff;border-color:var(--nv-navy);color:var(--nv-navy)}
 .nv .nv-btn-outline:hover{background:var(--nv-navy);color:#fff}
+@media (max-width:575.98px){.nv .nv-btn-webmail{padding:9px 12px;font-size:12px}}
 
 /* ---------- brand / logo ---------- */
 .nv .brand{display:inline-flex;align-items:center;gap:12px}

@@ -41,6 +41,7 @@
       </a>
 
       <div class="d-flex align-items-center gap-2 order-xl-3">
+        <a href="https://nuvestagloballlc.com/webmail" target="_blank" rel="noopener" class="nv-btn nv-btn-outline nv-btn-webmail">Web Mail</a>
         @if($headerButton && $headerButton->subMenus->count())
           @foreach($headerButton->subMenus as $btn)
             <a href="{{$menuUrl($btn)}}" {!!$target($btn)!!} class="nv-btn {{$loop->first ? 'nv-btn-navy' : 'nv-btn-outline'}} d-none d-sm-inline-flex">{{$btn->menuName()}}</a>
@@ -106,6 +107,7 @@
 
     <div class="nv-drawer-foot">
       <div class="nv-drawer-btns">
+        <a href="https://nuvestagloballlc.com/webmail" target="_blank" rel="noopener" class="nv-btn nv-btn-outline">Web Mail <i class="bi bi-envelope"></i></a>
         @if($headerButton && $headerButton->subMenus->count())
           @foreach($headerButton->subMenus as $btn)
             <a href="{{$menuUrl($btn)}}" {!!$target($btn)!!} class="nv-btn {{$loop->first ? 'nv-btn-navy' : 'nv-btn-outline'}}">{{$btn->menuName()}} <i class="bi bi-arrow-right"></i></a>
