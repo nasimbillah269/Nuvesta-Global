@@ -223,7 +223,7 @@
       </div>
       <div class="col-lg-8">
         <div data-aos="fade-up" class="why-box row g-0 row-cols-2 row-cols-md-3 row-cols-xl-5">
-          <div class="col why-item" data-aos="zoom-in" data-aos-delay="0"><span class="why-icon"><i class="bi bi-calendar2-check"></i></span><h6>26+ Years<br>Industry Experience</h6><p>Merchandising, costing, development, production and more.</p></div>
+          <div class="col why-item" data-aos="zoom-in" data-aos-delay="0"><span class="why-icon"><i class="bi bi-calendar2-check"></i></span><h6>Experience</h6><p>Merchandising, costing, development, production and more.</p></div>
           <div class="col why-item" data-aos="zoom-in" data-aos-delay="90"><span class="why-icon"><i class="bi bi-lightbulb"></i></span><h6>Deep Product<br>Knowledge</h6><p>Across woven, knit, denim and performance categories.</p></div>
           <div class="col why-item" data-aos="zoom-in" data-aos-delay="180"><span class="why-icon"><i class="bi bi-building"></i></span><h6>Strategic<br>Factory Network</h6><p>Trusted and capable manufacturing partners in Bangladesh.</p></div>
           <div class="col why-item" data-aos="zoom-in" data-aos-delay="270"><span class="why-icon"><i class="bi bi-tag"></i></span><h6>Commercial<br>Understanding</h6><p>From fabric to FOB — we make it work.</p></div>
